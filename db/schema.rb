@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150729221950) do
+ActiveRecord::Schema.define(version: 20150729230620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20150729221950) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "property_tenants", force: :cascade do |t|
+    t.integer  "property_id"
+    t.integer  "tenant_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "property_tenants", ["property_id"], name: "index_property_tenants_on_property_id", using: :btree
+  add_index "property_tenants", ["tenant_id"], name: "index_property_tenants_on_tenant_id", using: :btree
+
   create_table "tenants", force: :cascade do |t|
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
@@ -38,4 +48,6 @@ ActiveRecord::Schema.define(version: 20150729221950) do
     t.string   "password_digest"
   end
 
+  add_foreign_key "property_tenants", "properties"
+  add_foreign_key "property_tenants", "tenants"
 end

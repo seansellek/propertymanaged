@@ -18,10 +18,4 @@ RSpec.describe Property, type: :model do
 end
 
 
-# it 'include tweets' do
-#     tweet1 = Tweet.new(status: 'Uuuuunhhhhh')
-#     tweet2 = Tweet.new(status: 'Arrrrgggg')
-#     zombie = Zombie.new(name: 'Ash', tweets: [tweet1, tweet2])
-#     zombie.tweets.should include(tweet1)
-#     zombie.tweets.should include(tweet2)
-# ￼￼end
+
