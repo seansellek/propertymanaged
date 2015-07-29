@@ -16,12 +16,6 @@ ActiveRecord::Schema.define(version: 20150729213155) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "code_schools", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "landlords", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,44 +23,9 @@ ActiveRecord::Schema.define(version: 20150729213155) do
     t.string   "email"
   end
 
-  create_table "profiles", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "photo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
-
-  create_table "projects", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "github"
-    t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
-
   create_table "tenants", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.string   "email",          null: false
-    t.integer  "age"
-    t.integer  "code_school_id"
-  end
-
-  add_index "users", ["code_school_id"], name: "index_users_on_code_school_id", using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["name"], name: "index_users_on_name", using: :btree
-
-  add_foreign_key "profiles", "users"
-  add_foreign_key "projects", "users"
-  add_foreign_key "users", "code_schools"
 end
