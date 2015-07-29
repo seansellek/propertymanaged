@@ -21,10 +21,11 @@ ActiveRecord::Schema.define(version: 20150729221950) do
     t.datetime "updated_at",      null: false
     t.string   "name"
     t.string   "email"
+    t.string   "password_digest"
   end
 
   create_table "properties", force: :cascade do |t|
-    t.string   "password_digest"
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

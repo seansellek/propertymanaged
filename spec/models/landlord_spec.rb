@@ -13,6 +13,7 @@ RSpec.describe Landlord, type: :model do
   it "stores an encrypted password" do
     subject.should respond_to(:password_digest)
     subject.password_digest.should_not be == 'asdf'
+    subject.authenticate('fdsa').should_not be == subject
     subject.authenticate('asdf').should be == subject
   end
 end
