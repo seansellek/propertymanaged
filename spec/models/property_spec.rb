@@ -13,7 +13,7 @@ RSpec.describe Property, type: :model do
     subject.should respond_to(:zip)
   end
   its(:address) {should be == "42 Wallaby Way Sydney, Australia, 33130"}
-
+  
 
 end
 
