@@ -51,7 +51,8 @@ group :development, :test do
   gem 'rspec-its'
   gem 'shoulda-matchers', require: false
   gem 'factory_girl_rails'
-  
+  gem 'capybara'
+
 end
 
 
