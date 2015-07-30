@@ -17,7 +17,7 @@ RSpec.describe Tenant, type: :model do
     subject.authenticate('asdf').should be == subject
   end
   it "should include PropertyTenants" do
-    subject.propertytenants << propertytenant
-    subject.propertytenants.should include(propertytenant)
+    subject.property_tenants << propertytenant
+    subject.property_tenants.should include(propertytenant)
   end
 end
