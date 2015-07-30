@@ -21,7 +21,7 @@ RSpec.configure do |config|
   # require File.expand_path("../../config/environment", __FILE__)
   config.expect_with(:rspec) { |c| c.syntax = :should }
   config.backtrace_exclusion_patterns = [
-    /.rvm/
+    /.rvm/,/gems/
   ]
   require 'factory_girl_rails'
   config.mock_with :rspec
