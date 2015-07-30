@@ -23,7 +23,12 @@ RSpec.configure do |config|
   config.backtrace_exclusion_patterns = [
     /.rvm/
   ]
-  # config.include Capybara::DSL
+  require 'factory_girl_rails'
+  config.mock_with :rspec
+  config.include FactoryGirl::Syntax::Methods
+  config.order = "random"
+  Dir["./spec/support/**/*.rb"].sort.each { |f| require f}
+
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

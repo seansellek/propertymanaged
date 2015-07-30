@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Landlords" do
+RSpec.describe "Landlord Feature Tests" do
 
   context 'GET landlords/new' do
     before { visit new_landlord_path }
@@ -19,7 +19,7 @@ RSpec.describe "Landlords" do
       page.has_field? 'password_confirmation'
       page.has_button? 'Sign Up'
     end
-    
+
   end
 end
 

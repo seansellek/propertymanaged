@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Tenants" do
+RSpec.describe "Tenant Feature Tests" do
   context 'GET tenants/new' do
     before { visit new_tenant_path }
 

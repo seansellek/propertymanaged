@@ -1,17 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Landlord, type: :model do
-  let(:landlord) {Landlord.new(name: 'Ariel', password: 'asdf') }
-  let(:property) { Property.new }
+  let(:landlord) { build :landlord }
   subject { landlord }
 
-  it "has a name" do
-    subject.should respond_to(:name)
+  it_behaves_like 'a user' do
+    let(:user2) {build :landlord}
   end
-  it "has an email" do
-    subject.should respond_to(:email)
-  end
-  it { should have_secure_password }
 
-  it { should have_many(:properties) }
+  context "has correct associations" do
+    it { should have_many :properties }
+  end
+
 end
