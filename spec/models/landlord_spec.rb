@@ -13,8 +13,5 @@ RSpec.describe Landlord, type: :model do
   end
   it { should have_secure_password }
 
-  it "includes properties" do
-    subject.properties << property
-    subject.properties.should include(property)
-  end
+  it { should have_many(:properties) }
 end

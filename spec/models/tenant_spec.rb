@@ -11,8 +11,5 @@ RSpec.describe Tenant, type: :model do
     subject.should respond_to(:email)
   end
   it { should have_secure_password }
-  it "should include PropertyTenants" do
-    subject.property_tenants << propertytenant
-    subject.property_tenants.should include(propertytenant)
-  end
+  it { should have_many(:property_tenants) }
 end
