@@ -10,12 +10,7 @@ RSpec.describe Tenant, type: :model do
   it "has an email" do
     subject.should respond_to(:email)
   end
-  it "stores an encrypted password" do
-    subject.should respond_to(:password_digest)
-    subject.password_digest.should_not be == 'asdf'
-    subject.authenticate('fdsa').should_not be == subject
-    subject.authenticate('asdf').should be == subject
-  end
+  it { should have_secure_password }
   it "should include PropertyTenants" do
     subject.property_tenants << propertytenant
     subject.property_tenants.should include(propertytenant)

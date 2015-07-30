@@ -49,6 +49,7 @@ group :development, :test do
   #Rspec for testing
   gem 'rspec-rails'
   gem 'rspec-its'
+  gem 'shoulda-matchers', require: false
 end
 
 
