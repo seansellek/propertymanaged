@@ -12,4 +12,8 @@ RSpec.describe Landlord, type: :model do
     it { should have_many :properties }
   end
 
+  context 'can send invites', invite_system: true do
+    it { should have_many :invites }
+  end
+
 end

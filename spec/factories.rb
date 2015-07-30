@@ -1,4 +1,11 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :invite do
+    email "MyString"
+property nil
+landlord nil
+tenant nil
+token "MyString"
+  end
+
   factory :landlord do
     email 'xajler@gmail.com'
     password 'x1234567'
