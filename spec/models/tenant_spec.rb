@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Tenant, type: :model do
+  let(:propertytenant) { PropertyTenant.new }
   let(:tenant) {Tenant.new(name: 'Angelica', password: 'asdf') }
   subject { tenant }
   it "has a name" do
@@ -14,5 +15,9 @@ RSpec.describe Tenant, type: :model do
     subject.password_digest.should_not be == 'asdf'
     subject.authenticate('fdsa').should_not be == subject
     subject.authenticate('asdf').should be == subject
+  end
+  it "should include PropertyTenants" do
+    subject.propertytenants << propertytenant
+    subject.propertytenants.should include(propertytenant)
   end
 end
