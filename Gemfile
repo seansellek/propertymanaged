@@ -50,6 +50,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-its'
   gem 'shoulda-matchers', require: false
+  gem 'factory_girl_rails'
+  
 end
 
 
