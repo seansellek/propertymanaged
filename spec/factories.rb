@@ -1,9 +1,22 @@
-FactoryGirl.define do  factory :invite do
-    email "MyString"
-property nil
-landlord nil
-tenant nil
-token "MyString"
+FactoryGirl.define do
+  factory :invite do
+    email "test@test.com"
+    property
+    landlord 
+    tenant
+    token "MyString"
+  end
+
+  factory :property do
+    address1 "42 Wallaby Way"
+    city 'Sydney'
+    state 'Australia'
+    zip '33130'
+  end
+
+  factory :property_tenant do
+    property
+    tenant
   end
 
   factory :landlord do
