@@ -1,5 +1,5 @@
 class Property < ActiveRecord::Base
-  
+  belongs_to :landlord
 	def address
 		output=''
 		output << address1 + ' ' if address1
