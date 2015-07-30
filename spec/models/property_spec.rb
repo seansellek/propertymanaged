@@ -17,8 +17,8 @@ RSpec.describe Property, type: :model do
   its(:address) {should be == "42 Wallaby Way Sydney, Australia, 33130"}
 
   it "should have PropertyTenants" do
-    subject.propertytenants << propertytenant
-    subject.propertytenants.should include(propertytenant)
+    subject.property_tenants << propertytenant
+    subject.property_tenants.should include(propertytenant)
   end
 end
 
