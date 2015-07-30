@@ -1,7 +1,66 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/angelica/Desktop/projects/propertymanaged/app/models/tenant.rb": [
+      "/Users/Sean/OneDrive/Wyncode/propertymanaged/app/controllers/landlords_controller.rb": [
+        1,
+        1,
+        2,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        null,
+        null
+      ],
+      "/Users/Sean/OneDrive/Wyncode/propertymanaged/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/Users/Sean/OneDrive/Wyncode/propertymanaged/app/models/landlord.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/Sean/OneDrive/Wyncode/propertymanaged/app/models/property.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/Sean/OneDrive/Wyncode/propertymanaged/app/models/property_tenant.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/Sean/OneDrive/Wyncode/propertymanaged/app/models/tenant.rb": [
         1,
         1,
         1,
@@ -12,14 +71,8 @@
         1,
         1,
         null
-      ],
-      "/home/angelica/Desktop/projects/propertymanaged/app/models/property_tenant.rb": [
-        1,
-        1,
-        1,
-        null
       ]
     },
-    "timestamp": 1438288306
+    "timestamp": 1438288591
   }
 }
