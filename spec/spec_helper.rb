@@ -20,6 +20,7 @@ RSpec.configure do |config|
   # ENV["RAILS_ENV"] ||= 'test'
   # require File.expand_path("../../config/environment", __FILE__)
   config.expect_with(:rspec) { |c| c.syntax = :should }
+  # config.include Capybara::DSL
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
