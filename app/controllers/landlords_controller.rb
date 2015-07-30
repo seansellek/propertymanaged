@@ -1,4 +1,4 @@
-class LandlordController < ApplicationController
+class LandlordsController < ApplicationController
   def new
     @landlord = Landlord.new
   end

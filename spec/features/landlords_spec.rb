@@ -1,10 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe "Landlords" do
-  context 'GET landlords/new' do
-    it 'displays the create landlord page' do
-      visit new_landlord_path
 
+  context 'GET landlords/new' do
+    before { visit new_landlord_path }
+    it 'displays the create landlord page' do
+
+    end
+
+    it 'displays signup form' do
       page.should have_content 'Name'
       page.should have_content 'Email'
       page.should have_content 'Password'
@@ -15,5 +19,10 @@ RSpec.describe "Landlords" do
       page.has_field? 'password_confirmation'
       page.has_button? 'Sign Up'
     end
+    
   end
 end
+
+
+
+      
