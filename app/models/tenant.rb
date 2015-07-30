@@ -4,4 +4,7 @@ class Tenant < ActiveRecord::Base
 	has_many :properties, through: :property_tenants
 
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
+  validates :password, length: { :minimum => 8, :message => "password is too short" }
+  validates :name, :email, presence: true
+  validates :email, uniqueness: { case_sensitive: false }
 end

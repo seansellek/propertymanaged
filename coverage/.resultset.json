@@ -1,7 +1,12 @@
 {
   "RSpec": {
     "coverage": {
+
       "/Users/owner/Wyncode/Large_Projects/final_project/propertymanaged/app/models/landlord.rb": [
+
+      "/home/angelica/Desktop/projects/propertymanaged/app/models/tenant.rb": [
+        1,
+
         1,
         1,
         1,
@@ -10,6 +15,7 @@
         1,
         1,
         1,
+
         1,
         null,
         null,
@@ -21,20 +27,19 @@
       ],
       "/Users/owner/Wyncode/Large_Projects/final_project/propertymanaged/app/models/property.rb": [
         1,
+
+        null
+      ],
+      "/home/angelica/Desktop/projects/propertymanaged/app/models/property_tenant.rb": [
+
         1,
         1,
         1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
         null
       ]
     },
     "timestamp": 1438288697
+
+    "timestamp": 1438288306
   }
 }
