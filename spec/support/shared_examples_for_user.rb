@@ -11,6 +11,6 @@ shared_examples_for 'a user' do
     it { should validate_uniqueness_of(:email) }
     it { should_not allow_value("adlkj").for(:email) }
     it { should allow_value("ptico@ptico.net").for(:email) }
-    it { should validate_length_of(:password).is_at_least(8).with_message(/password is too short/) }
+    it { should validate_length_of(:password).is_at_least(8).with_message(/.*password.*/i) }
   end
 end
