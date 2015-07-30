@@ -1,15 +1,25 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/Sean/OneDrive/Wyncode/propertymanaged/app/models/landlord.rb": [
+      "/Users/owner/Wyncode/Large_Projects/final_project/propertymanaged/app/models/landlord.rb": [
         1,
         1,
         1,
         null,
         1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
         null
       ],
-      "/Users/Sean/OneDrive/Wyncode/propertymanaged/app/models/property.rb": [
+      "/Users/owner/Wyncode/Large_Projects/final_project/propertymanaged/app/models/property.rb": [
         1,
         1,
         1,
@@ -25,6 +35,6 @@
         null
       ]
     },
-    "timestamp": 1438278823
+    "timestamp": 1438288697
   }
 }
