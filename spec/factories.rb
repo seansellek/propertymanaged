@@ -4,7 +4,6 @@ FactoryGirl.define do
     property
     landlord 
     tenant
-    token "MyString"
   end
 
   factory :property do

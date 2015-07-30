@@ -19,7 +19,7 @@
 RSpec.configure do |config|
   # ENV["RAILS_ENV"] ||= 'test'
   # require File.expand_path("../../config/environment", __FILE__)
-  config.expect_with(:rspec) { |c| c.syntax = :should }
+  config.expect_with(:rspec) { |c| c.syntax = [:should, :expect] }
   config.backtrace_exclusion_patterns = [
     /.rvm/,/gems/
   ]

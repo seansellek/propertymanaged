@@ -1,0 +1,5 @@
+= form_for @invite, :url => property_invites_path(@invite.property_id) do |f|
+  = f.label :email
+  = f.email_field :email
+  = f.submit 'Invite Tenant'
+

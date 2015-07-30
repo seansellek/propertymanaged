@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+ 
+
   resources :landlords
   resources :properties do
     resources :invites 
