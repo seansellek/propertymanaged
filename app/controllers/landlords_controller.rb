@@ -7,9 +7,8 @@ class LandlordsController < ApplicationController
     @landlord = Landlord.new user_params
 
     if @landlord.save
-      redirect_to :back #, notice: "Created Landlord"
-    else
-      render action: 'new'
+      flash[:notice] = "The Landlord is successfully saved!"
+      redirect_to signup_path #, notice: "Created Landlord"
     end
   end
 
