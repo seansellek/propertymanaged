@@ -11,4 +11,5 @@ RSpec.describe Invite, type: :model, invite_system: true do
   it 'should generate a token on create' do
     expect(subject.token).to_not be_nil
   end
+  
 end

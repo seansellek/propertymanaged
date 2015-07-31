@@ -7,5 +7,7 @@ class Invite < ActiveRecord::Base
 
   def generate_token
     self.token = Digest::SHA1.hexdigest([self.property_id, Time.now, rand].join)
-  end  
+  end
+
+
 end
