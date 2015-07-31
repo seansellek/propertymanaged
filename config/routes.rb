@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'login', to: 'session#new', as: 'login'
+  get 'login', to: 'sessions#new', as: 'login'
 
-  resources :session
+  # resources :session
   resources :landlords
   resources :sessions
 

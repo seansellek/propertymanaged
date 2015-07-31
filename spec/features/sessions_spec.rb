@@ -17,8 +17,8 @@ RSpec.describe "Logging In:" do
     end
   end
   context 'when logging in' do
+    let(:landlord) { create :landlord }
     before do
-      let(:landlord) { create :landlord }
       visit login_path
 
       fill_in 'email', with: 'xajler@gmail.com'

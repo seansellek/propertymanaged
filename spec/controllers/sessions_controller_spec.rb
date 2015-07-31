@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SessionController, type: :controller do
+RSpec.describe SessionsController, type: :controller do
   context 'POST /session/create' do
     let(:landlord) { create :landlord }
     before do
