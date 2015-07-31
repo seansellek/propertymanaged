@@ -44,10 +44,15 @@ RSpec.describe "Landlord Feature Tests" do
       fill_in 'Confirm Password', with: 'z1234567'
       fill_in 'Name', with: 'Kornelije Sajler'
     end
-    it 'creates and saves the valid landlord' do
-      click_button 'Sign Up'
-
-      page.should have_content 'The Landlord is successfully saved!'
+    context'saves valid landlord' do
+      it 'saves valid landlord' do
+        click_button 'Sign Up'
+        page.should have_content 'The Landlord is successfully saved!'
+      end
+      it 'redirects to signin path' do
+        click_button 'Sign Up'
+        current_path.should == login_path
+      end
     end
     context "doesn't save invalid landlord" do
       it 'when passwords mismatch' do

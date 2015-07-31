@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'login', to: 'session#new', as: 'login'
+
   resources :landlords
 
   get 'signup', to: 'landlords#new', as: 'signup'
