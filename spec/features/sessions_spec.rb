@@ -33,7 +33,7 @@ RSpec.describe "Logging In:" do
       fill_in 'password', with: 'x1234980'
       click_button 'Log in'
 
-      expect(flash[:error]).to be_present
+      page.should have_content 'Incorrect Credentials'
     end
   end
 
