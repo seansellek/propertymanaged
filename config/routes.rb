@@ -2,6 +2,8 @@ Rails.application.routes.draw do
  
 
   resources :landlords
+
+  get 'signup', to: 'landlords#new', as: 'signup'
   resources :properties do
     resources :invites 
   end

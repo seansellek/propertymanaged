@@ -3,5 +3,9 @@ class Landlord < ActiveRecord::Base
   has_many :invites
   has_secure_password 
 
-  validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
+  validates :email, presence: true, uniqueness: {case_sensitive: false}
+  validates :name, presence: true
+  validates :password, confirmation: true, :length => {minimum: 8, message: 'password is too short'}
+  validates :password_confirmation, presence: true
+  validates :email, format: { :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/ }
 end
