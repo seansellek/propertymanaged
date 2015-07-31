@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'login', to: 'session#new', as: 'login'
 
   resources :landlords
+  resources :sessions
 
   get 'signup', to: 'landlords#new', as: 'signup'
   # The priority is based upon order of creation: first created -> highest priority.
