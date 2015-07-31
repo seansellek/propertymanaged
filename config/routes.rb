@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   get 'login', to: 'session#new', as: 'login'
 
+  resources :session
   resources :landlords
 
+  get 'dashboard' => 'dashboard#show'
   get 'signup', to: 'landlords#new', as: 'signup'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

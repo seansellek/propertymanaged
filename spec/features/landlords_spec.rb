@@ -1,13 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Landlord Feature Tests" do
-
-  context 'GET landlords/new' do
+RSpec.describe "Landlord Creation:" do
+  context 'when visiting new landlord path' do
     before { visit new_landlord_path }
-    it 'displays the create landlord page' do
-
-    end
-
     it 'displays signup form' do
       page.should have_content 'Name'
       page.should have_content 'Email'
@@ -20,9 +15,8 @@ RSpec.describe "Landlord Feature Tests" do
       page.has_button? 'Sign Up'
     end
   end
-
-  context 'Get /signup' do
-    it 'displays the sign up page' do
+  context 'when visiting signup path' do
+    it 'displays the sign up form' do
       visit signup_path
       page.should have_content 'Name'
       page.should have_content 'Email'
@@ -35,8 +29,7 @@ RSpec.describe "Landlord Feature Tests" do
       page.has_button? 'Sign Up'
     end
   end
-
-  context 'POST /landlord' do
+  context 'when submitting form' do
     before do
       visit new_landlord_path
       fill_in 'Email', with: 'xajler@gmail.com'
@@ -44,53 +37,49 @@ RSpec.describe "Landlord Feature Tests" do
       fill_in 'Confirm Password', with: 'z1234567'
       fill_in 'Name', with: 'Kornelije Sajler'
     end
-    context'saves valid landlord' do
-      it 'saves valid landlord' do
-        click_button 'Sign Up'
-        page.should have_content 'The Landlord is successfully saved!'
-      end
-      it 'redirects to signin path' do
-        click_button 'Sign Up'
-        current_path.should == login_path
-      end
+    it 'saves landlord' do
+      click_button 'Sign Up'
+      page.should have_content 'The Landlord is successfully saved!'
     end
-    context "doesn't save invalid landlord" do
-      it 'when passwords mismatch' do
-        fill_in 'Confirm Password', with: 'x1234567'
-        click_button 'Sign Up'
+    it 'redirects to login path' do
+      click_button 'Sign Up'
+      current_path.should == login_path
+    end
+    it 'alerts of password mismatch' do
+      fill_in 'Confirm Password', with: 'x1234567'
+      click_button 'Sign Up'
 
-        page.should have_content "Password confirmation doesn't match"
-      end
-      it 'when email is blank' do
-        fill_in 'Email', with: ''
-        click_button 'Sign Up'
+      page.should have_content "Password confirmation doesn't match"
+    end
+    it 'alerts of blank email' do
+      fill_in 'Email', with: ''
+      click_button 'Sign Up'
 
-        page.should have_content "Email can't be blank"
-      end
-      it 'when password is blank' do
-        fill_in 'Password', with: ''
-        click_button 'Sign Up'
+      page.should have_content "Email can't be blank"
+    end
+    it 'alerts of blank password' do
+      fill_in 'Password', with: ''
+      click_button 'Sign Up'
 
-        page.should have_content "Password can't be blank"
-      end
-      it 'when email is not unique' do
-        create :landlord
+      page.should have_content "Password can't be blank"
+    end
+    it 'alerts of existing email' do
+      create :landlord
 
-        click_button 'Sign Up'
+      click_button 'Sign Up'
 
-        page.should have_content "Email has already been taken"
-      end
-      it 'when password is less than 8 characters' do
-        fill_in 'Password', with: '123'
-        fill_in 'Confirm Password', with: '123'
-        click_button 'Sign Up'
+      page.should have_content "Email has already been taken"
+    end
+    it 'alerts of too short password' do
+      fill_in 'Password', with: '123'
+      fill_in 'Confirm Password', with: '123'
+      click_button 'Sign Up'
 
-        page.should have_content "Password is too short (minimum is 8 characters)"
-      end
+      page.should have_content "Password is too short (minimum is 8 characters)"
     end
   end
-  context 'PUT landlords/id' do
-    it 'valid landlord update' do
+  context 'when updating landlord' do
+    it 'with valid landlord updates landlord' do
       landlord = create :landlord
       visit edit_landlord_path landlord
 
@@ -104,7 +93,7 @@ RSpec.describe "Landlord Feature Tests" do
 
       page.should have_content 'Landlord is successfully updated!'
     end
-    it 'invalid when passwords mismatch' do
+    it 'with invalid landlord alerts of mismatched password' do
       landlord = create :landlord
       visit edit_landlord_path landlord
 

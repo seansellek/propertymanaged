@@ -26,7 +26,6 @@ RSpec.configure do |config|
   require 'factory_girl_rails'
   config.mock_with :rspec
   config.include FactoryGirl::Syntax::Methods
-  config.order = "random"
   Dir["./spec/support/**/*.rb"].sort.each { |f| require f}
 
 
