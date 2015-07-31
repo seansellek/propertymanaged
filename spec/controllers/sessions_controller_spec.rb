@@ -3,11 +3,10 @@ require 'rails_helper'
 RSpec.describe SessionsController, type: :controller do
   context 'POST /session/create' do
     let(:landlord) { create :landlord }
-    before do
-      landlord.save
-    end
+    # before do
+    #   landlord.save
+    # end
     it 'redirects to Dashboard' do
-
      post 'create', attributes_for(:landlord, user_type: 'landlord')
      expect(response).to redirect_to dashboard_path
     end
