@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "Properties CRUD:" do
   context 'When viewing dashboard' do
+    let(:landlord) { create :landlord}
     before do
-      login_landlord
+      page.set_rack_session(user_id: landlord.id)
+      page.set_rack_session(user_type: 'landlord')
       visit dashboard_path
     end
 
