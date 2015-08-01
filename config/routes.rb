@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
 
   resources :landlords
-  resources :tenants
   resources :sessions
   # resources :invites 
   resources :properties
@@ -13,6 +12,7 @@ Rails.application.routes.draw do
   get 'signup', to: 'landlords#new', as: 'signup'
   get 'properties/:property_id/invite/new', to: 'invites#new'
   post 'invites' => 'invites#create'
+  get 'tenants/signup', to: 'tenants#new', as: 'new_tenant'
 
   
   # The priority is based upon order of creation: first created -> highest priority.
