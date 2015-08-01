@@ -1,9 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe InvitesController, type: :controller, invite_system: true do
-  let(:property) { create :property }
   let(:landlord) { create :landlord }
+  let(:property) { create :property }
+  
   before do
+    property.landlord = landlord
+    property.save
     login(landlord)
   end
   describe 'GET #new' do
@@ -24,7 +27,9 @@ RSpec.describe InvitesController, type: :controller, invite_system: true do
     it 'instantiates new invite' do
       expect(assigns(:invite)).to be_a(Invite)
     end
-    it 'Associates invite with current user'
+    it 'Associates invite with current user' do
+      expect(assigns(:invite).landlord).to be == landlord
+    end
     it 'Makes call to InviteMailer on successful save'
   end
 end

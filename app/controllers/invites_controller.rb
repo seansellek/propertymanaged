@@ -8,7 +8,7 @@ class InvitesController < ApplicationController
   def create
     # byebug
     @invite = Invite.new(invite_params)
-    @invite.landlord_id = Property.find(invite_params['property_id']).try(:landlord_id)
+    @invite.landlord = Property.find(invite_params['property_id']).try(:landlord)
 
     if @invite.save
       redirect_to dashboard_path
