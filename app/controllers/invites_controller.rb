@@ -10,7 +10,7 @@ class InvitesController < ApplicationController
     @invite.landlord = Property.find(invite_params['property_id']).try(:landlord)
 
     if @invite.save
-      InviteMailer.new_tenant_invite(@invite, new_tenant_path(:invite_token => @invite.token)).deliver_now
+      InviteMailer.new_tenant_invite(@invite, new_tenant_url(:invite_token => @invite.token)).deliver_now
       flash[:notice] = 'Invite sent!'
     else
       flash[:error] = 'Error sending invite'

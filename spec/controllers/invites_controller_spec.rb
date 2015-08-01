@@ -9,7 +9,7 @@ RSpec.describe InvitesController, type: :controller, invite_system: true do
     property.save
     login(landlord)
     mail = double(deliver_now: true)
-    InviteMailer.stub(:new_tenant_invite).and_return(mail)
+    allow(InviteMailer).to receive(:new_tenant_invite).and_return(mail)
   end
   describe 'GET #new' do
     before { get :new, property_id: property.id.to_s }
