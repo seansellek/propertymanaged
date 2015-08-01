@@ -1,4 +1,5 @@
-= form_for @invite, :url => property_invites_path(@invite.property_id) do |f|
+= form_for @invite do |f|
+  = f.hidden_field :property_id, :value => @invite.property_id
   = f.label :email
   = f.email_field :email
   = f.submit 'Invite Tenant'

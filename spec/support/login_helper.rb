@@ -4,6 +4,10 @@ module SpecLoginHelper
     request.session[:user_id] = landlord.id
     request.session[:user_type] = 'landlord'
   end
+  def login user
+    request.session[:user_id] = user.id
+    request.session[:user_type] = user.class.to_s.downcase
+  end
   def login_tenant
     tenant = create :tenant
     request.session[:user_id] = tenant.id
