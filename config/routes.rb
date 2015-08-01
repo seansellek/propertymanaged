@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'properties/new'
+
   get 'login', to: 'sessions#new', as: 'login'
 
   # resources :session
