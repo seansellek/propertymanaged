@@ -8,7 +8,7 @@ RSpec.describe SessionsController, type: :controller do
     # end
     it 'redirects to Dashboard' do
      post 'create', attributes_for(:landlord, user_type: 'landlord')
-     expect(response).to redirect_to dashboard_path
+     expect(response).to render_template 
     end
     it 'alerts you of incorrect credentials' do
      post 'create', attributes_for(:landlord, user_type: 'landlord', email: "bad@email.com")
