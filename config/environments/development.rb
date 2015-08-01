@@ -4,8 +4,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.mandrillapp.com',
     port:                 587,
-    user_name:            'me@seansellek.com',
-    password:             'z8Av16AD1O36VOQhSKIFUQ',
+    user_name:            Rails.application.secrets.mandrill_username,
+    password:             Rails.application.secrets.mandrill_password,
   }
   config.action_mailer.perform_deliveries = true
   # In the development environment your application's code is reloaded on
