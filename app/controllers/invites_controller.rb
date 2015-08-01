@@ -6,16 +6,16 @@ class InvitesController < ApplicationController
     @invite.property_id = params[:property_id]
   end
   def create
-    # byebug
     @invite = Invite.new(invite_params)
     @invite.landlord = Property.find(invite_params['property_id']).try(:landlord)
 
     if @invite.save
-      redirect_to dashboard_path
-      # InviteMailer.new_tenant_invite(@invite, new_tenant_path(:invite_token => @invite.token)).deliver
+      InviteMailer.new_tenant_invite(@invite, new_tenant_path(:invite_token => @invite.token)).deliver_now
+      flash[:notice] = 'Invite sent!'
     else
-      #handle errors
+      flash[:error] = 'Error sending invite'
     end
+    redirect_to dashboard_path
   end
 
   private

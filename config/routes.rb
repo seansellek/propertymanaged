@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
 
   resources :landlords
+  resources :tenants
   resources :sessions
   # resources :invites 
   resources :properties

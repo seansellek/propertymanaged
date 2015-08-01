@@ -8,6 +8,8 @@ RSpec.describe InvitesController, type: :controller, invite_system: true do
     property.landlord = landlord
     property.save
     login(landlord)
+    mail = double(deliver_now: true)
+    InviteMailer.stub(:new_tenant_invite).and_return(mail)
   end
   describe 'GET #new' do
     before { get :new, property_id: property.id.to_s }
@@ -30,6 +32,11 @@ RSpec.describe InvitesController, type: :controller, invite_system: true do
     it 'Associates invite with current user' do
       expect(assigns(:invite).landlord).to be == landlord
     end
-    it 'Makes call to InviteMailer on successful save'
+  end
+  describe 'POST #create' do
+    it 'Makes call to InviteMailer on successful save' do
+      expect(InviteMailer).to receive(:new_tenant_invite)
+      post :create, invite: {property_id: property.id.to_s, email: 'me@seansellek.com'}
+    end
   end
 end
