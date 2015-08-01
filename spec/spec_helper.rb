@@ -19,14 +19,13 @@
 RSpec.configure do |config|
   # ENV["RAILS_ENV"] ||= 'test'
   # require File.expand_path("../../config/environment", __FILE__)
-  config.expect_with(:rspec) { |c| c.syntax = [:should, :expect] }
+  config.expect_with(:rspec) { |c| c.syntax = [:should , :expect] }
   config.backtrace_exclusion_patterns = [
     /.rvm/,/gems/
   ]
   require 'factory_girl_rails'
   config.mock_with :rspec
   config.include FactoryGirl::Syntax::Methods
-  config.order = "random"
   Dir["./spec/support/**/*.rb"].sort.each { |f| require f}
 
 

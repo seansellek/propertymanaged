@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  get 'properties/new'
  
+  get 'login', to: 'sessions#new', as: 'login'
 
+  # resources :session
   resources :landlords
+  resources :sessions
 
+  get 'dashboard' => 'dashboard#show'
   get 'signup', to: 'landlords#new', as: 'signup'
   resources :properties do
     resources :invites 

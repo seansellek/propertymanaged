@@ -14,4 +14,4 @@
   = f.label :password_confirmation, "Confirm Password:"
   %br
   = f.password_field :password_confirmation
-  = f.submit 'Sign Up'
+  = f.submit @landlord.id ? 'Update Landlord' : 'Sign Up'

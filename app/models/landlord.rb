@@ -5,7 +5,7 @@ class Landlord < ActiveRecord::Base
 
   validates :email, presence: true, uniqueness: {case_sensitive: false}
   validates :name, presence: true
-  validates :password, confirmation: true, :length => {minimum: 8, message: 'password is too short'}
+  validates :password, confirmation: true, :length => {minimum: 8, message: 'is too short (minimum is 8 characters)'}
   validates :password_confirmation, presence: true
   validates :email, format: { :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/ }
 end
