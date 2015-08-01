@@ -3,6 +3,7 @@ class DashboardController < ApplicationController
 
   def show
     if session[:user_type] == 'landlord'
+      @user = current_user
       render 'landlord'
     elsif session[:user_type] == 'tenant'
       render 'tenant'

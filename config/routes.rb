@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   # resources :session
   resources :landlords
   resources :sessions
+  resources :properties
+  # resources :dashboard
+
 
   get 'dashboard' => 'dashboard#show'
   get 'signup', to: 'landlords#new', as: 'signup'

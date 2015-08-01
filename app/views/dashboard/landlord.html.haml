@@ -1,1 +1,15 @@
 %h1 Welcome, Landlord!
+
+%table
+  %tr
+    %th Name
+    %th Show
+    %th Edit
+    %th Delete
+  - @user.properties.each do |p|
+    %tr
+      %td= p.name
+      %td= link_to 'Show Property', property_path(p)
+      %td= link_to 'Edit Property', property_path(p)
+      %td= link_to 'Delete Property', property_path(p)
+= link_to 'Create Property', new_property_path		
