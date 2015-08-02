@@ -1,0 +1,22 @@
+%h1 Show Property
+%p 
+ Name:
+ \#{@property.name}
+%p  
+ Address 1:
+ \#{@property.address1}
+%p
+ Address 2:
+ \#{@property.address2}
+%p
+ City:
+ \#{@property.city}
+%p 
+ State:
+ \#{@property.state}
+%p
+ Zip:
+ \#{@property.zip}
+
+ / =link_to 'Edit' edit_property_path()
+ / =link_to 'Back' property_path

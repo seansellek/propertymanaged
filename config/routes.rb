@@ -5,8 +5,14 @@ Rails.application.routes.draw do
 
   resources :landlords
   resources :sessions
+<<<<<<< HEAD
   # resources :invites 
   resources :properties
+=======
+  resources :properties
+  # resources :dashboard
+
+>>>>>>> properties
 
   get 'dashboard' => 'dashboard#show'
   get 'signup', to: 'landlords#new', as: 'signup'
