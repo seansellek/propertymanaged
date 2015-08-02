@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730201130) do
+ActiveRecord::Schema.define(version: 20150802190016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,10 +57,12 @@ ActiveRecord::Schema.define(version: 20150730201130) do
     t.integer  "tenant_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "ticket_id"
   end
 
   add_index "property_tenants", ["property_id"], name: "index_property_tenants_on_property_id", using: :btree
   add_index "property_tenants", ["tenant_id"], name: "index_property_tenants_on_tenant_id", using: :btree
+  add_index "property_tenants", ["ticket_id"], name: "index_property_tenants_on_ticket_id", using: :btree
 
   create_table "tenants", force: :cascade do |t|
     t.datetime "created_at",      null: false
@@ -70,10 +72,19 @@ ActiveRecord::Schema.define(version: 20150730201130) do
     t.string   "password_digest"
   end
 
+  create_table "tickets", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "status"
+  end
+
   add_foreign_key "invites", "landlords"
   add_foreign_key "invites", "properties"
   add_foreign_key "invites", "tenants"
   add_foreign_key "properties", "landlords"
   add_foreign_key "property_tenants", "properties"
   add_foreign_key "property_tenants", "tenants"
+  add_foreign_key "property_tenants", "tickets"
 end

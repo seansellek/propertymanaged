@@ -19,6 +19,10 @@ FactoryGirl.define do
     tenant
   end
 
+  factory :ticket do
+    
+  end
+
   factory :landlord do
     email 'xajler@gmail.com'
     password 'x1234567'
