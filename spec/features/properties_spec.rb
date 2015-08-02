@@ -45,6 +45,7 @@ RSpec.describe "Properties CRUD:" do
       it 'saves property' do
          click_button('Create Property')
          page.should have_content "The Property is successfully saved!"
+         page.should have_content 'Angelica Rodriguez'
       end
 
       it 'redirects to dashboard' do

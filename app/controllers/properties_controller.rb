@@ -8,7 +8,8 @@ class PropertiesController < ApplicationController
   end
 
   def create
-    @property = current_user.properties.new
+    #make sure we assign the property with the attributes the user entered.
+    @property = current_user.properties.new(property_params)
 
     if @property.save
       flash[:notice] = "The Property is successfully saved!"
@@ -16,6 +17,7 @@ class PropertiesController < ApplicationController
     else
       render :back
     end
+  end
 
   def edit
     @property = Property.find(params[:id])
@@ -42,6 +44,13 @@ class PropertiesController < ApplicationController
     end
   end
 
+  
+  private
+  #use strong parameters to protect from mass assignment
+  def property_params
+    params.require(:property).
+      permit(:name, :address1, :address2, :city, :state, :zip)
   end
 
 end
+
