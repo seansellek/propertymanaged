@@ -1,6 +1,3 @@
-%h1 New Property
-%p Find me in app/views/properties/new.html.haml
-
 = form_for @property do |f|
   = f.label :name, 'Name:'
   %br
@@ -25,5 +22,5 @@
   = f.label :zip, 'Zip:'
   %br
   = f.text_field :zip
-  = f.submit 'Create Property'
-  
+  = f.submit 'Update Property'
+  =f.submit current_user ? 'Update Property' : 'Sign Up'

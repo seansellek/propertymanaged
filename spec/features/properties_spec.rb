@@ -21,7 +21,7 @@ RSpec.describe "Properties CRUD:" do
     it 'and clicking link, displays form' do
       click_link('Create Property')
 
-      #build this test further after making first two tests pass. 
+      #build this test further after making first two tests pass.
       expect(page).to have_field('Name:')
       expect(page).to have_field('Address 1:')
       expect(page).to have_field('Address 2:')
@@ -39,13 +39,13 @@ RSpec.describe "Properties CRUD:" do
         fill_in 'City:', with: 'Miami'
         fill_in 'State:', with: 'FL'
         fill_in 'Zip:', with: '33025'
-       
+
       end
-      
+
       it 'saves property' do
          click_button('Create Property')
          page.should have_content "The Property is successfully saved!"
-      end 
+      end
 
       it 'redirects to dashboard' do
         click_button('Create Property')
@@ -69,35 +69,37 @@ RSpec.describe "Properties CRUD:" do
       click_button('Create Property')
       click_link('Show Property')
 
-      #build this test further after making first two tests pass. 
+      #build this test further after making first two tests pass.
       expect(page).to have_content('Name:')
       expect(page).to have_content('Address 1:')
       expect(page).to have_content('Address 2:')
       expect(page).to have_content('City:')
       expect(page).to have_content('State:')
       expect(page).to have_content('Zip:')
-
-
     end
-
 
     it 'displays edit property link' do
       click_button('Create Property')
+      visit dashboard_path
       expect(page).to have_link('Edit Property')
     end
 
-    it 'and clicking edit Property link, takes you to properties#show' do
-      click_button('Create Property')
+    it 'and clicking edit Property link, takes you to properties#edit' do
+      click_button 'Create Property'
+      visit dashboard_path
+      expect(page).to have_content('Edit Property')
       click_link('Edit Property')
       expect(page).to have_content('Edit Property')
+      current_path.should match(/properties\/.+\/edit/)
     end
 
 
     it 'and clicking link, displays form' do
       click_button('Create Property')
+      visit dashboard_path
       click_link('Edit Property')
 
-      #build this test further after making first two tests pass. 
+      #build this test further after making first two tests pass.
       expect(page).to have_field('Name:')
       expect(page).to have_field('Address 1:')
       expect(page).to have_field('Address 2:')
@@ -108,7 +110,21 @@ RSpec.describe "Properties CRUD:" do
 
     end
 
-  end
+    it 'displays delete property link' do
+      click_button('Create Property')
+      visit dashboard_path
+      expect(page).to have_link('Delete Property')
+    end
+
+    it 'deletes the property' do
+      click_button('Create Property')
+      visit dashboard_path
+      click_link 'Delete Property'
+      page.should have_content 'Property was successfully destroyed.'
+    end
+
+
+    end
 
 
 
@@ -118,4 +134,4 @@ RSpec.describe "Properties CRUD:" do
 
 
 
-end
+  end

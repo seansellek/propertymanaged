@@ -10,6 +10,6 @@
     %tr
       %td= p.name
       %td= link_to 'Show Property', property_path(p)
-      %td= link_to 'Edit Property', property_path(p)
-      %td= link_to 'Delete Property', property_path(p)
-= link_to 'Create Property', new_property_path		
+      %td= link_to 'Edit Property', edit_property_path(p)
+      %td= link_to 'Delete Property', p, method: :delete, data: { confirm: 'Are you sure?' }
+= link_to 'Create Property', new_property_path
