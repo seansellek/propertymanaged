@@ -11,7 +11,9 @@ require 'capybara/rspec'
 require 'capybara/rails'
 require 'factory_girl_rails'
 require 'simplecov'
+require "rack_session_access/capybara"
 SimpleCov.start 'rails'
+
 # Add additional requires below this line. Rails is not loaded until this point!
  
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -34,7 +36,7 @@ SimpleCov.start 'rails'
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  config.include SpecLoginHelper, :type => :controller
+  config.include SpecLoginHelper
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

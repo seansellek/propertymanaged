@@ -12,4 +12,8 @@ RSpec.describe Tenant, type: :model do
     it { should have_many(:property_tenants) }
   end
 
+  context 'can accept invites', invite_system: true do
+    it { should have_many :invites }
+  end
+
 end

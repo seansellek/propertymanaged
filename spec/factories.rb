@@ -1,4 +1,24 @@
 FactoryGirl.define do
+  factory :invite do
+    email "me@seansellek.com"
+    property
+    landlord 
+    tenant
+    token 'd76770d7af781d25166df6cd3b120ee734893fd2'
+  end
+
+  factory :property do
+    address1 "42 Wallaby Way"
+    city 'Sydney'
+    state 'Australia'
+    zip '33130'
+  end
+
+  factory :property_tenant do
+    property
+    tenant
+  end
+
   factory :landlord do
     email 'xajler@gmail.com'
     password 'x1234567'

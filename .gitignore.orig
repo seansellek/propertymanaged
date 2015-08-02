@@ -17,3 +17,8 @@
 /tmp
 /coverage
 
+<<<<<<< HEAD
+.DS_Store
+config/secrets.yml
+=======
+>>>>>>> invite

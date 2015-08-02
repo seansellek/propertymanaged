@@ -1,6 +1,7 @@
 class Landlord < ActiveRecord::Base
   has_many :properties
-  has_secure_password
+  has_many :invites
+  has_secure_password 
 
   validates :email, presence: true, uniqueness: {case_sensitive: false}
   validates :name, presence: true
