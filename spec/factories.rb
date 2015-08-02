@@ -2,8 +2,7 @@ FactoryGirl.define do
   factory :invite do
     email "me@seansellek.com"
     property
-    landlord 
-    tenant
+    landlord
     token 'd76770d7af781d25166df6cd3b120ee734893fd2'
   end
 

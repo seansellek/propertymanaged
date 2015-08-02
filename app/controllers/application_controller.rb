@@ -12,6 +12,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_current_user user
+    if user.class.to_s == 'Landlord'
+      session[:user_type] = 'landlord'
+      session[:user_id] = user.id
+    elsif user.class.to_s == 'Tenant'
+      session[:user_type] = 'tenant'
+      session[:user_id] = user.id
+    end
+  end
+
+
+
   def require_logged_in
     return true if current_user 
 
