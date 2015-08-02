@@ -12,6 +12,10 @@ RSpec.describe TenantsController, type: :controller, invite_system: true, tenant
       get :new
       expect(response).to render_template(:noinvite)
     end
+    it "renders 'noinvite' when invalid token" do
+      get :new, invite_token: '94a8e81841adaedd060968109a16c48c575a37dc'
+      expect(response).to render_template(:noinvite)
+    end
 
   end
 end
