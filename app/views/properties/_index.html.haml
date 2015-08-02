@@ -1,0 +1,14 @@
+%table
+  %tr
+    %th Name
+    %th Add Tenant
+    %th Edit
+    %th Delete
+  - @user.properties.each do |p|
+    %tr
+      %td= link_to p.name, property_path(p)
+      %td= link_to 'Add Tennant', new_invite_path(p)
+      %td= link_to 'Edit Property', edit_property_path(p)
+      %td= link_to 'Delete Property', p, method: :delete, data: { confirm: 'Are you sure?' }
+= link_to 'Create Property', new_property_path
+

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get 'signup', to: 'landlords#new', as: 'signup'
 
-  get 'properties/:property_id/invite/new', to: 'invites#new'
+  get 'properties/:property_id/invite', to: 'invites#new'
   post 'invites' => 'invites#create'
   get 'tenants/signup', to: 'tenants#new', as: 'new_tenant'
 
