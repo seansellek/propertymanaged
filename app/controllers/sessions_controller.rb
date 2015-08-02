@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-   
     if params['user_type'] == 'landlord'
       @user = Landlord.find_by(email: params['email']).try(:authenticate, params['password'])
     elsif params['user_type'] == 'tenant'
@@ -19,4 +18,12 @@ class SessionsController < ApplicationController
     flash[:error] = 'Incorrect Credentials'
     render 'new'
   end
+
+  def destroy
+    session[:user_id] = nil
+    session[:user_type] = nil
+    redirect_to root_path
+  end
+
+
 end

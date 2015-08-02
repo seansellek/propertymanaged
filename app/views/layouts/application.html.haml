@@ -9,4 +9,5 @@
   %body
     %div#notice= flash[:notice] if flash[:notice]
     %div#error= flash[:error] if flash[:error] 
+    = link_to('Logout', logout_path) if current_user
     = yield

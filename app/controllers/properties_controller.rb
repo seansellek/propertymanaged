@@ -1,4 +1,5 @@
 class PropertiesController < ApplicationController
+  before_action :require_logged_in
   def new
   	@property = Property.new
   end
@@ -44,7 +45,7 @@ class PropertiesController < ApplicationController
     end
   end
 
-  
+
   private
   #use strong parameters to protect from mass assignment
   def property_params

@@ -22,5 +22,6 @@
   = f.label :zip, 'Zip:'
   %br
   = f.text_field :zip
+  %br
   = f.submit 'Update Property'
-  =f.submit current_user ? 'Update Property' : 'Sign Up'
+  = link_to 'Cancel', property_path(@property)

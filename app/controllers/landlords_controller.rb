@@ -8,10 +8,11 @@ class LandlordsController < ApplicationController
 
     if @landlord.save
       flash[:notice] = "The Landlord is successfully saved!"
-      redirect_to login_path #, notice: "Created Landlord"
+      current_user = @landlord
+      redirect_to dashboard_path #, notice: "Created Landlord"
     else
       flash[:error] = @landlord.errors.full_messages[0]
-      redirect_to signup_path
+      redirect_to login_path
     end
   end
 
