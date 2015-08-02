@@ -4,7 +4,7 @@ RSpec.describe "Invite feature tests", invite_system: true do
 
   context 'Create New Invite' do
     let(:property) { create :property}
-    before { visit "properties/#{property.id}/invite/new" }
+    before { visit "properties/#{property.id}/invite" }
     it 'should route ok' do
     end
     it 'should display new invite form' do
