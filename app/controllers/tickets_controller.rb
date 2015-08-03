@@ -21,7 +21,18 @@ class TicketsController < ApplicationController
     end
   end
 
-  
+  def edit
+    @ticket = Ticket.find(params['id'])
+    # byebug
+    redirect_to dashboard_path unless @ticket.property_tenant.tenant == current_user
+  end
+
+  def update
+    @ticket = Ticket.find(params['id'])
+    @ticket.update_attributes(ticket_params)
+
+    redirect_to dashboard_path
+  end
 
 
   private

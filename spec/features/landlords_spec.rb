@@ -64,7 +64,7 @@ RSpec.describe "Landlord Creation:" do
       page.should have_content "Password can't be blank"
     end
     it 'alerts of existing email' do
-      create :landlord
+      create :landlord, email: 'xajler@gmail.com'
 
       click_button 'Sign Up'
 
@@ -83,7 +83,7 @@ RSpec.describe "Landlord Creation:" do
       landlord = create :landlord
       visit edit_landlord_path landlord
 
-      find_field('Email').value.should be == 'xajler@gmail.com'
+      find_field('Email').value.should be == landlord.email
       find_field('Name').value.should be == 'Kornelije Sajler'
 
       fill_in 'Password', with: 'aoeuidht'

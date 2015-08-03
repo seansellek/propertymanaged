@@ -17,6 +17,8 @@ RSpec.describe Ticket, type: :model do
   it { should validate_presence_of(:description) }
   it { should validate_presence_of(:status) }
 
+  it { should validate_presence_of(:property_tenant) }
+  
   it 'responds to open?' do
     expect(ticket).to respond_to(:open?)
   end

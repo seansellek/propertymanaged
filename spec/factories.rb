@@ -20,17 +20,18 @@ FactoryGirl.define do
   factory :ticket do
     title 'Broken hose'
     description 'Fix it please'
+    property_tenant
   end
 
   factory :landlord do
-    email 'xajler@gmail.com'
+    sequence(:email) { |n| "landlord#{n}@people.com" }
     password 'x1234567'
     password_confirmation 'x1234567'
     name 'Kornelije Sajler'
   end
 
   factory :tenant do
-    email 'jack@tenants.com'
+    sequence(:email) { |n| "tenant#{n}@people.com" }
     password 'x1234567'
     password_confirmation 'x1234567'
     name 'Jack Tenant'

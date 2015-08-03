@@ -1,5 +1,5 @@
 class Ticket < ActiveRecord::Base
-  validates :title, :description, :status, presence: true
+  validates :title, :description, :status, :property_tenant, presence: true
   belongs_to :property_tenant
 
   def open?
