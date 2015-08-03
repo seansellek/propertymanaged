@@ -1,0 +1,17 @@
+%h1 New Ticket
+%p Find me in app/views/tickets/new.html.haml
+
+= form_for @ticket do |f|
+  = f.label :title, 'Title:'
+  %br
+  = f.text_field :title
+  %br
+  = f.label :description, 'Description:'
+  %br
+  = f.text_field :description
+  %br
+  = label_tag :open
+  = radio_button_tag :status, :open
+  = label_tag :close 
+  = radio_button_tag :status, :close
+  = f.submit 'Create Ticket'

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tickets/index'
+
   root 'sessions#new'
  
   get 'login', to: 'sessions#new', as: 'login'
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   # resources :invites 
   resources :properties
   # resources :dashboard
+  resources :tickets
 
 
   get 'dashboard' => 'dashboard#show'
