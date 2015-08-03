@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :current_user
+  helper_method :current_user, :require_tenant, :require_landlord
 
   def current_user
     if session[:user_type] == 'landlord'
@@ -10,6 +10,14 @@ class ApplicationController < ActionController::Base
     elsif session[:user_type] == 'tenant'
       @current_user ||= Tenant.find(session[:user_id])
     end
+  end
+
+  def require_tenant
+    redirect_to dashboard_path unless session[:user_type] == 'tenant'
+  end
+
+  def require_landlord
+    redirect_to dashboard_path unless session[:user_type] == 'landlord'
   end
 
   def require_logged_in

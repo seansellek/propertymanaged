@@ -1,12 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe InvitesController, type: :controller, invite_system: true do
-  let(:landlord) { create :landlord }
   let(:property) { create :property }
+    let(:landlord) { property.landlord }
   
   before do
-    property.landlord = landlord
-    property.save
     login(landlord)
     mail = double(deliver_now: true)
     allow(InviteMailer).to receive(:new_tenant_invite).and_return(mail)

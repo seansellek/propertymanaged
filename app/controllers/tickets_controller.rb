@@ -1,17 +1,17 @@
 class TicketsController < ApplicationController
+  before_action :require_logged_in
+  before_action :require_tenant, only: [:new, :create]
+
   
   def index
   end
 
   def new
-    @ticket = Ticket.new
-    @ticket.property_tenant = current_user.property_tenants
+    @ticket = Ticket.new  
   end
 
   def create
-    #make sure we assign the property with the attributes the user entered.
-    @ticket = current_user.property_tenant.tickets.new(ticket_params)
-
+    @ticket = current_user.current_occupancy.tickets.new(ticket_params)
     if @ticket.save
       #TODO: create notification
       flash[:notice] = "The Ticket is successfully saved!"
@@ -20,6 +20,8 @@ class TicketsController < ApplicationController
       render :back
     end
   end
+
+  
 
 
   private

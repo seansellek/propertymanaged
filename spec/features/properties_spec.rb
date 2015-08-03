@@ -54,21 +54,21 @@ RSpec.describe "Properties CRUD:" do
       end
 
 
-    it 'displays show property link' do
+    it 'displays Angelica Rodriguez link' do
       click_button('Create Property')
-      expect(page).to have_link('Show Property')
+      expect(page).to have_link('Angelica Rodriguez')
     end
 
-    it 'and clicking Show Property link, takes you to properties#show' do
+    it 'and clicking Angelica Rodriguez link, takes you to properties#show' do
       click_button('Create Property')
-      click_link('Show Property')
-      expect(page).to have_content('Show Property')
+      click_link('Angelica Rodriguez')
+      expect(page).to have_content('Angelica Rodriguez')
     end
 
 
     it 'and clicking link, displays form' do
       click_button('Create Property')
-      click_link('Show Property')
+      click_link('Angelica Rodriguez')
 
       #build this test further after making first two tests pass.
       expect(page).to have_content('Name:')

@@ -23,8 +23,6 @@ RSpec.describe "Properties CRUD:" do
 
       expect(page).to have_field('Title:')
       expect(page).to have_field('Description:')
-      page.has_field? 'user_type', type: 'radio', with: 'open'
-      page.has_field? 'user_type', type: 'radio', with: 'close'
     end
 
     context 'when submitting property form' do
@@ -32,12 +30,6 @@ RSpec.describe "Properties CRUD:" do
         visit new_ticket_path
         fill_in 'Title:', with: 'AC is not cooling'
         fill_in 'Description:', with: 'Air conditioner on but not blowing out cold air'
-        choose('status_open')
-      end
-
-       it 'saves ticket' do
-         click_button('Create Ticket')
-         page.should have_content "The Ticket is successfully saved!"
       end
 
     end
