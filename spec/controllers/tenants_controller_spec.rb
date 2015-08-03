@@ -20,11 +20,11 @@ RSpec.describe TenantsController, type: :controller, invite_system: true, tenant
 
   describe 'POST #create' do
     it 'Assigns token' do
-      get :create, invite_token: invite.token, tenant: attributes_for(:tenant)
+      get :create, tenant: attributes_for(:tenant, token: invite.token )
       expect(assigns[:token]).to be == invite.token
     end
     it 'Assigns invite' do
-      get :create, invite_token: invite.token, tenant: attributes_for(:tenant)
+      get :create, tenant: attributes_for(:tenant, token: invite.token )
       expect(assigns[:invite]).to be == invite
     end
     it "renders 'noinvite' when invite not found" do
@@ -33,12 +33,12 @@ RSpec.describe TenantsController, type: :controller, invite_system: true, tenant
       expect(response).to render_template :noinvite
     end
     it "creates a PropertyTenant" do
-      get :create, invite_token: invite.token, tenant: attributes_for(:tenant)
+      get :create, tenant: attributes_for(:tenant, token: invite.token )
       expect(assigns[:propertytenant]).to be_a(PropertyTenant)
       expect(assigns(:propertytenant).property).to be == invite.property
     end
     it 'destroys invite upon success' do
-      get :create, invite_token: invite.token, tenant: attributes_for(:tenant)
+      get :create, tenant: attributes_for(:tenant, token: invite.token )
       expect(Invite.find_by(id: invite.id)).to be_nil
     end
 

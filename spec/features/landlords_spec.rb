@@ -41,9 +41,9 @@ RSpec.describe "Landlord Creation:" do
       click_button 'Sign Up'
       page.should have_content 'The Landlord is successfully saved!'
     end
-    it 'redirects to login path' do
+    it 'sends to dashboard' do
       click_button 'Sign Up'
-      current_path.should == login_path
+      current_path.should == dashboard_path
     end
     it 'alerts of password mismatch' do
       fill_in 'Confirm Password', with: 'x1234567'
