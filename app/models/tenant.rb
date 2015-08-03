@@ -8,4 +8,12 @@ class Tenant < ActiveRecord::Base
   validates :password, length: { :minimum => 8, :message => "password is too short" }
   validates :name, :email, presence: true
   validates :email, uniqueness: { case_sensitive: false }
+
+  def current_occupancy
+    #how to validate that only one Occupancy is active for a tenant
+    #or better handled by a seperate association
+    #can two models be connected in different associations?
+    self.property_tenants.find(active: true)
+  end
+
 end

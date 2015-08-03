@@ -12,6 +12,7 @@ FactoryGirl.define do
     city 'Sydney'
     state 'Australia'
     zip '33130'
+    landlord
   end
 
   factory :property_tenant do
@@ -20,7 +21,8 @@ FactoryGirl.define do
   end
 
   factory :ticket do
-    
+    title 'Broken hose'
+    description 'Fix it please'
   end
 
   factory :landlord do
