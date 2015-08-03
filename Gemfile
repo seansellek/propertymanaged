@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 #ruby=2.2-head
 #ruby-gemset=propertymanaged
 
-
+gem 'hellosign-ruby-sdk'
+#hellosign api
 gem 'rack_session_access'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
@@ -60,5 +61,3 @@ group :test do
   gem 'capybara'
   gem 'simplecov'
 end
-
-

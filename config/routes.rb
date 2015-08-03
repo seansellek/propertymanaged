@@ -1,14 +1,25 @@
 Rails.application.routes.draw do
+  post '/signatures/callbacks',
+    to: 'signatures#callbacks'
+
   root 'sessions#new'
- 
+
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
+
   resources :landlords
   resources :sessions
-  # resources :invites 
+  # resources :invites
   resources :properties
   # resources :dashboard
+  resources :signatures, only: [:new, :create] do
+    collection do
+      post 'callbacks'
+    end
+  end
+
+    
 
 
   get 'dashboard' => 'dashboard#show'
@@ -19,7 +30,12 @@ Rails.application.routes.draw do
   post 'invites' => 'invites#create'
   get 'tenants/signup', to: 'tenants#new', as: 'new_tenant'
 
-  
+
+
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

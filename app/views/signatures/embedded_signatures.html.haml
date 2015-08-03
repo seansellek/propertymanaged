@@ -1,0 +1,13 @@
+%script{:src => "//s3.amazonaws.com/cdn.hellofax.com/js/embedded.js", :type => "text/javascript"}
+/ Open the embedded signer iFrame
+:javascript
+  //
+    HelloSign.init("yourClientId");
+    HelloSign.open({
+      'url': '#{@sign_url}',
+      'allowCancel': true,
+      'messageListener': function(eventData) {
+        alert("HelloSign event received");
+      }
+    });
+  //
