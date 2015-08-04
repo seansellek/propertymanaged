@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803191944) do
+ActiveRecord::Schema.define(version: 20150804215736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 20150803191944) do
   add_index "invites", ["landlord_id"], name: "index_invites_on_landlord_id", using: :btree
   add_index "invites", ["property_id"], name: "index_invites_on_property_id", using: :btree
   add_index "invites", ["tenant_id"], name: "index_invites_on_tenant_id", using: :btree
+
+  create_table "invoices", force: :cascade do |t|
+    t.integer  "property_tenant_id"
+    t.integer  "amount"
+    t.boolean  "paid"
+    t.datetime "duedate"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "invoices", ["property_tenant_id"], name: "index_invoices_on_property_tenant_id", using: :btree
 
   create_table "landlords", force: :cascade do |t|
     t.datetime "created_at",      null: false
@@ -58,6 +69,8 @@ ActiveRecord::Schema.define(version: 20150803191944) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.boolean  "active",      default: true
+    t.integer  "duedate",     default: 28
+    t.integer  "rate"
   end
 
   add_index "property_tenants", ["property_id"], name: "index_property_tenants_on_property_id", using: :btree
@@ -85,6 +98,7 @@ ActiveRecord::Schema.define(version: 20150803191944) do
   add_foreign_key "invites", "landlords"
   add_foreign_key "invites", "properties"
   add_foreign_key "invites", "tenants"
+  add_foreign_key "invoices", "property_tenants"
   add_foreign_key "properties", "landlords"
   add_foreign_key "property_tenants", "properties"
   add_foreign_key "property_tenants", "tenants"

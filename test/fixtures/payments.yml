@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  property_tenant_id: 
+  amount: 1
+  status: false
+  duedate: 2015-08-04 14:31:11
+
+two:
+  property_tenant_id: 
+  amount: 1
+  status: false
+  duedate: 2015-08-04 14:31:11

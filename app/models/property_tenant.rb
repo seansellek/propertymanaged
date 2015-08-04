@@ -2,13 +2,19 @@ class PropertyTenant < ActiveRecord::Base
   belongs_to :property
   belongs_to :tenant
   has_many :tickets
+  has_many :invoices
   has_one :landlord, through: :property
 
+  validates :duedate, numericality: { less_than: 29, greater_than: 0}
   validate :one_active_per_tenant, :one_active_per_property
   # validates :active, uniqueness: { scope: :tenant }
    # validates :active, uniqueness: { scope: :property }
 
 
+  def invoice month = this_month_duedate
+    self.invoices.new(amount: self.rate, duedate: self.duedate)
+
+  end
 
    private
 
@@ -20,6 +26,12 @@ class PropertyTenant < ActiveRecord::Base
     else
       return true
     end
+  end
+
+  def this_month_duedate
+    beginning_of_month = Date.today.beginning_of_month
+    due = self.duedate - 1.day
+    beginning_of_month + due
   end
 
   def one_active_per_property
