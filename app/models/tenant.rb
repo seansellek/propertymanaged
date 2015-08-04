@@ -8,4 +8,9 @@ class Tenant < ActiveRecord::Base
   validates :password, length: { :minimum => 8, :message => "password is too short" }
   validates :name, :email, presence: true
   validates :email, uniqueness: { case_sensitive: false }
+
+  def current_occupancy
+    self.property_tenants.where(active: true).first
+  end
+
 end

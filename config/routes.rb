@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  get 'tickets/index'
+
   root 'sessions#new'
  
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'tickets/:id/close', to: 'tickets#close'
 
   resources :landlords
   resources :sessions
@@ -10,6 +13,7 @@ Rails.application.routes.draw do
   resources :properties
   resources :tenants, except: :show
   # resources :dashboard
+  resources :tickets
 
 
   get 'dashboard' => 'dashboard#show'
