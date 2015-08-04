@@ -21,9 +21,12 @@ class ApplicationController < ActionController::Base
       session[:user_id] = user.id
     end
   end
-def require_tenant
-redirect_to dashboard_path unless session[:user_type] == 'tenant'
-end
+  def require_tenant
+    unless session[:user_type] == 'tenant'
+      flash[:error] = "You have to be a tenant to do that!"
+      redirect_to dashboard_path 
+    end
+  end
 
   def require_landlord
     redirect_to dashboard_path unless session[:user_type] == 'landlord'

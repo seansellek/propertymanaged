@@ -83,7 +83,12 @@ RSpec.describe TicketsController, type: :controller do
       expect(assigns(:ticket).description).to eq('Hello')
     end
 
-    it 'does not allow landlord'
+    it 'does not allow landlord' do
+      login( create :landlord )
+      put 'update', id: ticket.id, ticket: attributes_for(:ticket, description: 'Hello')
+      expect(flash[:error]).to_not be_nil
+      expect(response).to redirect_to dashboard_path
+    end
 
     it 'only allows owner of ticket' do
       ticket2 = create :ticket
@@ -101,7 +106,6 @@ RSpec.describe TicketsController, type: :controller do
     before do
       login tenant
     end
-    it 'allows either landlord or tenant' 
 
     it 'only allows owner of ticket' do
       ticket2 = create :ticket
