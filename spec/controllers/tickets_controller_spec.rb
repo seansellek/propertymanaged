@@ -47,18 +47,17 @@ RSpec.describe TicketsController, type: :controller do
   context 'GET #edit' do
     before(:each) do
       login tenant
-      get 'edit', id: ticket.id
+      # get 'edit', id: ticket.id
     end
-    it 'retrieves ticket from db and instantiates it as @ticket' do
-      expect(assigns(:ticket)).to eq(ticket)
-    end
-    it "renders 'edit' view" do
-      expect(response).to render_template :edit
-    end
+    # it 'retrieves ticket from db and instantiates it as @ticket' do
+    #   expect(assigns(:ticket)).to eq(ticket)
+    # end
+    # it "renders 'edit' view" do
+    #   expect(response).to render_template :edit
+    # end
     it 'only allows owner of ticket to edit' do
-      tenant2 = create :tenant
-      login tenant2
-      get 'edit', id: ticket.id
+      ticket2 = create :ticket
+      get 'edit', id: ticket2.id
       expect(flash[:error]).to_not be_nil
       expect(response).to redirect_to dashboard_path
     end
@@ -83,7 +82,15 @@ RSpec.describe TicketsController, type: :controller do
       expect(assigns(:ticket)).to be_a(Ticket)
       expect(assigns(:ticket).description).to eq('Hello')
     end
+
     it 'does not allow landlord'
+
+    it 'only allows owner of ticket' do
+      ticket2 = create :ticket
+      get 'update', id: ticket2.id
+      expect(flash[:error]).to_not be_nil
+      expect(response).to redirect_to dashboard_path
+    end
     # it 'does not allow you to change the title' do
     #   put 'update', id: ticket.id, ticket: attributes_for(:ticket, title: 'Hello')
     #   expect(assigns(:ticket).errors.full_messages.empty?).to_not  be_truthy
@@ -91,7 +98,17 @@ RSpec.describe TicketsController, type: :controller do
   end
 
   context 'GET #close' do
-    it 'allows either landlord or tenant'
+    before do
+      login tenant
+    end
+    it 'allows either landlord or tenant' 
+
+    it 'only allows owner of ticket' do
+      ticket2 = create :ticket
+      get 'close', id: ticket2.id
+      expect(flash[:error]).to_not be_nil
+      expect(response).to redirect_to dashboard_path
+    end
 
 
 

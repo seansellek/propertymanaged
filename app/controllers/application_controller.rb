@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
     redirect_to dashboard_path unless session[:user_type] == 'landlord'
   end
 
+  def current_user_type
+    session[:user_type].to_sym
+  end
+
   def require_logged_in
     return true if current_user 
 

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
  
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'tickets/:id/close', to: 'tickets#close'
 
   resources :landlords
   resources :sessions

@@ -1,6 +1,7 @@
 class TicketsController < ApplicationController
   before_action :require_logged_in
   before_action :require_tenant, only: [:new, :create]
+  before_action :require_owner, except: [:new, :create]
 
   
   def index
@@ -23,8 +24,6 @@ class TicketsController < ApplicationController
 
   def edit
     @ticket = Ticket.find(params['id'])
-    # byebug
-    redirect_to dashboard_path unless @ticket.property_tenant.tenant == current_user
   end
 
   def update
@@ -34,12 +33,26 @@ class TicketsController < ApplicationController
     redirect_to dashboard_path
   end
 
+ def close
+    @ticket = Ticket.find(params['id'])
+    @ticket.close
+ end
 
   private
   #use strong parameters to protect from mass assignment
   def ticket_params
     params.require(:ticket).
       permit(:title, :description)
+  end
+
+  def require_owner
+    @ticket = Ticket.find(params['id'])
+    # byebug
+    unless @ticket.property_tenant.send(current_user_type) == current_user
+      flash[:error]="That's not your ticket!"
+      redirect_to dashboard_path
+      return
+    end
   end
 
 end
