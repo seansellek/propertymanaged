@@ -26,4 +26,6 @@
   %br
   = f.text_field :zip
   = f.submit 'Create Property'
-  
+
+%FORM
+  %INPUT{:Type => "button", :VALUE => "Back", :onClick => "history.go(-1);return true;"}/
