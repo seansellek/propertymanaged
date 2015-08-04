@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :sessions
   # resources :invites 
   resources :properties
+  resources :tenants, except: :show
   # resources :dashboard
   resources :tickets
 
@@ -21,7 +22,8 @@ Rails.application.routes.draw do
 
   get 'properties/:property_id/invite', to: 'invites#new'
   post 'invites' => 'invites#create'
-  get 'tenants/signup', to: 'tenants#new', as: 'new_tenant'
+  get 'tenants/signup', to: 'tenants#new'
+
 
   
   # The priority is based upon order of creation: first created -> highest priority.

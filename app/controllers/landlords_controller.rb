@@ -8,7 +8,7 @@ class LandlordsController < ApplicationController
 
     if @landlord.save
       flash[:notice] = "The Landlord is successfully saved!"
-      current_user = @landlord
+      set_current_user @landlord
       redirect_to dashboard_path #, notice: "Created Landlord"
     else
       flash[:error] = @landlord.errors.full_messages[0]
