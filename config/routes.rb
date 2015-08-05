@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get 'invoices/show'
-
   get 'invoices/edit'
 
   get 'tickets/index'
@@ -18,6 +17,7 @@ Rails.application.routes.draw do
   resources :tenants, except: :show
   # resources :dashboard
   resources :tickets
+
 
 
   get 'dashboard' => 'dashboard#show'

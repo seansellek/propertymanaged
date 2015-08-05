@@ -13,7 +13,6 @@ class Invoice < ActiveRecord::Base
   def self.need_notification
     # byebug
     self.due_soon.select do |invoice|
-
       time_since_notified = DateTime.current.to_i - invoice.last_notified.to_i
       time_since_notified > 2.weeks.to_i
     end

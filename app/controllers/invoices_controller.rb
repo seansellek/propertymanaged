@@ -1,9 +1,11 @@
 class InvoicesController < ApplicationController
   before_action :require_logged_in
+  before_action :require_landlord, only: [:mark_paid]
   def show
     @invoice = Invoice.find(params[:id])
   end
 
-  def edit
+  def mark_paid
+    Invoice.find(params[:id]).paid = true
   end
 end
