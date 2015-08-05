@@ -17,6 +17,12 @@ class PropertyTenant < ActiveRecord::Base
     end
   end
 
+  def self.generate_invoices
+    self.where(active: true).each do |occupancy|
+      occupancy.invoice
+    end
+  end
+
    private
 
   def one_active_per_tenant

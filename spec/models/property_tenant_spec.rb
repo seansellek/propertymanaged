@@ -70,6 +70,15 @@ RSpec.describe PropertyTenant, type: :model do
     expect(property_tenant.invoices.length).to be == 1
   end
 
+  it 'generates invoices for all active occupancies' do
+    create :property_tenant
+    create :property_tenant
+    create :property_tenant
+    property_tenant.invoice
+    PropertyTenant.generate_invoices
+    expect(Invoice.all.length).to be == PropertyTenant.all.length
+  end
+
   # it "responds to invoiced? with true or false" do
   #   expect(property_tenant).to respond_to(:invoiced?)
   #   expected(property_tenant.invoiced?).to be_falsey
