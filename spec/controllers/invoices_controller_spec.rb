@@ -1,15 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe InvoicesController, type: :controller do
-  let(:ocupancy) { create :property_tenant }
-  let(:landlord) { ocupancy.landlord }
+  let(:occupancy) { create :property_tenant }
+  let(:landlord) { occupancy.landlord }
+  let(:invoice)  { occupancy.invoice }
   before(:each) do
     login landlord
   end
   describe "GET #show" do
     it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
+      get :show, id: invoice.id
+      expect(assigns[:invoice]).to eq(invoice)
+      expect(response).to render_template :show
     end
   end
 

@@ -17,6 +17,9 @@ FactoryGirl.define do
     tenant
     rate 100000
   end
+  factory :invoice do
+
+  end
 
   factory :ticket do
     title 'Broken hose'

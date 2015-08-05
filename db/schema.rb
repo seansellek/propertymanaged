@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804215736) do
+ActiveRecord::Schema.define(version: 20150805025632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,10 +33,11 @@ ActiveRecord::Schema.define(version: 20150804215736) do
   create_table "invoices", force: :cascade do |t|
     t.integer  "property_tenant_id"
     t.integer  "amount"
-    t.boolean  "paid"
+    t.boolean  "paid",               default: false
     t.datetime "duedate"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.datetime "last_notified"
   end
 
   add_index "invoices", ["property_tenant_id"], name: "index_invoices_on_property_tenant_id", using: :btree

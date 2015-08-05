@@ -6,7 +6,8 @@ namespace :tenant_invoices do
 
   desc "Fires notifications for approaching unpaid invoices"
   task send_reminders: :environment do
-    
+    Invoice.due_soon.each do |invoice|
+      InviteMailer.send_invoice(invoice)
+    end
   end
-
 end
