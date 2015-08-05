@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'invoices/show'
+
+  get 'invoices/edit'
+
   get 'tickets/index'
 
   root 'sessions#new'

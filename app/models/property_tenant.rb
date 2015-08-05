@@ -11,9 +11,10 @@ class PropertyTenant < ActiveRecord::Base
    # validates :active, uniqueness: { scope: :property }
 
 
-  def invoice month = this_month_duedate
-    self.invoices.new(amount: self.rate, duedate: self.duedate)
-
+  def invoice
+    if !self.invoices.last || self.invoices.last.duedate.month != Date.today.month
+      self.invoices.create(amount: self.rate, duedate: this_month_duedate)
+    end
   end
 
    private
@@ -30,7 +31,7 @@ class PropertyTenant < ActiveRecord::Base
 
   def this_month_duedate
     beginning_of_month = Date.today.beginning_of_month
-    due = self.duedate - 1.day
+    due = (self.duedate - 1).days
     beginning_of_month + due
   end
 

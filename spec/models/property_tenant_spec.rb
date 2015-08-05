@@ -53,11 +53,21 @@ RSpec.describe PropertyTenant, type: :model do
     new_pt.active = true
     expect(new_pt.valid?).to be_falsey
   end
-  it "responds to invoice by creating an invoice for that month" do
+  it "responds to invoice by creating an invoice" do
     expect(property_tenant).to respond_to(:invoice)
     expect(property_tenant.invoices.first).to be_nil
     property_tenant.invoice
-    expect(property_tenant.invoice.first).to be_a(Invoice)
+    expect(property_tenant.invoices.first).to be_a(Invoice)
+  end
+  it 'generates an invoice for that month' do
+    property_tenant.invoice
+    expect(property_tenant.invoices.first.duedate.month).to be == Date.today.month
+    expect(property_tenant.invoices.first.duedate.day).to be == property_tenant.duedate
+  end
+  it 'generates only one invoice per month' do
+    property_tenant.invoice
+    property_tenant.invoice
+    expect(property_tenant.invoices.length).to be == 1
   end
 
   # it "responds to invoiced? with true or false" do

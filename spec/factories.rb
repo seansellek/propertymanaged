@@ -15,6 +15,7 @@ FactoryGirl.define do
   factory :property_tenant do
     property
     tenant
+    rate 100000
   end
 
   factory :ticket do
