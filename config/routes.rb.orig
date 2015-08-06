@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   get 'invoices/show'
   get 'invoices/edit'
 
+=======
+  
+>>>>>>> master
   get 'tickets/index'
 
   root 'sessions#new'
@@ -19,12 +23,16 @@ Rails.application.routes.draw do
   resources :properties
   resources :tenants, except: :show
   # resources :dashboard
-
+  
   resources :tickets do
     resources :comments
   end
 
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> master
   get 'dashboard' => 'dashboard#show'
 
   get 'signup', to: 'landlords#new', as: 'signup'
