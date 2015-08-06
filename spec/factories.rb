@@ -40,8 +40,4 @@ FactoryGirl.define do
     password_confirmation 'x1234567'
     name 'Jack Tenant'
   end
-
-  factory :comment do
-    body 'issue still not resolved'
-  end
 end

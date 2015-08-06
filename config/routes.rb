@@ -9,9 +9,6 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'tickets/:id/close', to: 'tickets#close'
-  #get 'comments/:id/new', to: 'comments#new'
-
-  resources :comments
 
   resources :landlords
   resources :sessions
@@ -19,10 +16,8 @@ Rails.application.routes.draw do
   resources :properties
   resources :tenants, except: :show
   # resources :dashboard
+  resources :tickets
 
-  resources :tickets do
-    resources :comments
-  end
 
 
   get 'dashboard' => 'dashboard#show'

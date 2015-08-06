@@ -17,5 +17,4 @@
 /tmp
 /coverage
 
-public/system/
 .env

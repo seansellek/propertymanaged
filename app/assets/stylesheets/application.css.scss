@@ -39,15 +39,6 @@ a {
     text-decoration: none;
     color: $light-text;
 }
-#error {
-  height: 50px;
-  background-color: $error;
-  width: 300px;
-  color: white;
-  margin: 0 auto;
-  text-align: center;
-  box-sizing: border-box;
-}
 
 /*
  * HEADER STYLES
@@ -123,8 +114,9 @@ header {
         right: 0;
         background-color: $accent;
         text-align: center;
+        -webkit-transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s all;
         transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s all;
-        transition-delay: 0.5s;
+        transition-delay: 0.2s;
         box-shadow:  3px 4px 12px rgba(0,0,0,0.10);
         li {
           height: 50px;
@@ -189,6 +181,7 @@ form input:not([type='radio']), .button {
     border: 0;
     font-size: 18px;
     box-sizing: border-box;
+    -webkit-transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s all;
     transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s all;
 }
 
@@ -272,6 +265,7 @@ section > div{
   background-position: 50% 50%;
   background-size: 50%;
   height: 100%;
+  -webkit-transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s all;
   transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s all;
   // transition-delay: 0.3s;
 
@@ -381,16 +375,10 @@ table .unpaid {
 .tickets .comments {
   background-image: url(asset_path('comments.svg'));
   height: 20px;
-  background-size: 40%;
   padding-right: 60px;
   padding-top: 30px;
   background-repeat: no-repeat;
   background-position: 50% 95%;
-  transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s all;
   color: $default
-}
-.tickets .comments:hover {
-  background-size: 45%;
-}
 
-
+}

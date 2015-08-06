@@ -27,9 +27,8 @@
             -elsif current_user_type == :tenant
               %li= link_to('My Account', tenant_path(current_user))
 
-    = if flash[:notice]
-      %div#notice= flash[:notice]
-    = if flash[:error]
-      %div#error= flash[:error]
+
+    %div#notice= flash[:notice] if flash[:notice]
+    %div#error= flash[:error] if flash[:error]
     %div.container
       = yield

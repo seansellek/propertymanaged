@@ -3,7 +3,6 @@ class Ticket < ActiveRecord::Base
   belongs_to :property_tenant
   has_one :tenant, through: :property_tenant
   has_one :landlord, through: :property_tenant
-  has_many :comments, as: :commentable
 
   def open?
     self.status
