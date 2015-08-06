@@ -8,4 +8,9 @@ class Landlord < ActiveRecord::Base
   validates :password, confirmation: true, :length => {minimum: 8, message: 'is too short (minimum is 8 characters)'}
   validates :password_confirmation, presence: true
   validates :email, format: { :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/ }
+  def get_email_hash
+    email = self.email
+    email.strip!
+    Digest::MD5.hexdigest(email)
+  end
 end

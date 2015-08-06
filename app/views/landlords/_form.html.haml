@@ -1,17 +1,7 @@
 = form_for @landlord do |f|
-  = f.label :name, 'Name:'
-  %br
-  = f.text_field :name
-  %br
-  = f.label :email, 'Email:'
-  %br
-  = f.email_field :email
-  %br
-  = f.label :password
-  %br
-  = f.password_field :password
-  %br
-  = f.label :password_confirmation, "Confirm Password:"
-  %br
-  = f.password_field :password_confirmation
+  %ol
+    %li= f.text_field :name, placeholder: 'Name'
+    %li= f.email_field :email, placeholder: 'Email'
+    %li= f.password_field :password, placeholder: 'Password'
+    %li= f.password_field :password_confirmation, placeholder: 'Confirm Password'
   = f.submit @landlord.id ? 'Update Landlord' : 'Sign Up'

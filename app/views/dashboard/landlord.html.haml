@@ -1,3 +1,62 @@
-%h1 Welcome, #{current_user.name}!
+%h1 Your Dashboard
+%section.main-objects
+  %div.payments
+    %span.number 1
+    %span.description Payments waiting
+  %div.service
+    %span.number 2
+    %span.description Service requests
+  %div.agreements
+    %span.number 3
+    %span.description Active contracts
+%section.secondary-objects
+  %div.card.properties
+    %h2 Properties
+    %table
+      %tr
+        %th Property
+        %th Tenant
+        %th Paid?
+        %th Status
+      %tr.odd
+        %td Beach House
+        %td Clark Kent
+        %td.paid 
+        %td.bad 1 service request
+      %tr
+        %td Lake House
+        %td Bruce Wayne
+        %td.unpaid 
+        %td.good all clear!
+      %tr.odd
+        %td Old House
+        %td -
+        %td -
+        %td -
 
-=render 'properties/index'
+
+  %div.card.tickets
+    %h2 Service Requests
+    %table
+      %tr
+        %th Property
+        %th Issue
+        %th Status
+      %tr.odd
+        %td Beach House
+        %td
+          %h3 Plumbing Broke
+          %p When I flush the toilet bad stuff happens. Seriously.
+        %td
+          %div.status.bad Open
+          %div.comments 2
+      %tr
+        %td Old House
+        %td
+          %h3 Roof is leaking
+          %p Sometimes I think it rains inside more than it rains outside.
+        %td
+          %div.status.good Closed
+          %div.comments 15
+
+    
