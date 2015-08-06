@@ -374,5 +374,12 @@ table .unpaid {
   margin-bottom: 5px;
 }
 .tickets .comments {
-  
+  background-image: url(asset_path('comments.svg'));
+  height: 20px;
+  padding-right: 60px;
+  padding-top: 30px;
+  background-repeat: no-repeat;
+  background-position: 50% 95%;
+  color: $default
+
 }
