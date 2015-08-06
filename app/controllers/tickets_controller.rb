@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :require_logged_in
-  before_action :require_tenant, only: [:new, :create]
+  before_action :require_tenant, only: [:new, :create, :update]
   before_action :require_owner, except: [:new, :create]
 
   

@@ -12,20 +12,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_current_user user
-    if user.class.to_s == 'Landlord'
-      session[:user_type] = 'landlord'
-      session[:user_id] = user.id
-    elsif user.class.to_s == 'Tenant'
-      session[:user_type] = 'tenant'
-      session[:user_id] = user.id
-    end
-  end
+<<<<<<< HEAD
   def require_tenant
-    unless session[:user_type] == 'tenant'
-      flash[:error] = "You have to be a tenant to do that!"
-      redirect_to dashboard_path 
-    end
+    redirect_to dashboard_path unless session[:user_type] == 'tenant'
   end
 
   def require_landlord
@@ -35,6 +24,19 @@ class ApplicationController < ActionController::Base
   def current_user_type
     session[:user_type].to_sym
   end
+=======
+  def set_current_user user
+    if user.class.to_s == 'Landlord'
+      session[:user_type] = 'landlord'
+      session[:user_id] = user.id
+    elsif user.class.to_s == 'Tenant'
+      session[:user_type] = 'tenant'
+      session[:user_id] = user.id
+    end
+  end
+
+
+>>>>>>> master
 
   def require_logged_in
     return true if current_user 

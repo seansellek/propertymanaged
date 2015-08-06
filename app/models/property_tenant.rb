@@ -2,6 +2,7 @@ class PropertyTenant < ActiveRecord::Base
   belongs_to :property
   belongs_to :tenant
   has_many :tickets
+  has_one :landlord, through: :property
 
   validate :one_active_per_tenant, :one_active_per_property
   # validates :active, uniqueness: { scope: :tenant }
