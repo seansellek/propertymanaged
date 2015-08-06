@@ -39,6 +39,15 @@ a {
     text-decoration: none;
     color: $light-text;
 }
+#error {
+  height: 50px;
+  background-color: $error;
+  width: 300px;
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+  box-sizing: border-box;
+}
 
 /*
  * HEADER STYLES
@@ -383,3 +392,5 @@ table .unpaid {
 .tickets .comments:hover {
   background-size: 45%;
 }
+
+
