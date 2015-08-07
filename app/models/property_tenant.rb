@@ -2,8 +2,10 @@ class PropertyTenant < ActiveRecord::Base
   belongs_to :property
   belongs_to :tenant
   has_many :tickets
+  has_one :contract
   has_many :invoices
   has_one :landlord, through: :property
+  scope :active, -> {where active: true}
 
   validates :duedate, numericality: { less_than: 29, greater_than: 0}
   validate :one_active_per_tenant, :one_active_per_property

@@ -34,5 +34,14 @@ RSpec.describe Landlord, type: :model do
     ticket = create :ticket
     expect(landlord.open_requests.length).to be == 2
   end
+  it '.active_contracts reports active contracts' do
+    occupancy.landlord = landlord
+    contract = create :contract, property_tenant: occupancy
+    contract.signed = true
+    contract.save
+    expect(landlord.active_contracts).to include(contract)
+
+
+  end
 
 end
