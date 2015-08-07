@@ -1,7 +1,17 @@
 class Landlord < ActiveRecord::Base
   has_many :properties
   has_many :invites
-  has_secure_password 
+  has_many :property_tenants, through: :properties
+  has_many :tickets, through: :property_tenants
+  has_many :invoices, through: :property_tenants
+  has_secure_password
+
+  def unpaid_invoices 
+    invoices.where(paid: false)
+  end
+  def open_requests
+    tickets.where(status: true)
+  end
 
   validates :email, presence: true, uniqueness: {case_sensitive: false}
   validates :name, presence: true

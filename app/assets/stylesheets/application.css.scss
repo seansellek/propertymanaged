@@ -39,6 +39,16 @@ a {
     text-decoration: none;
     color: $light-text;
 }
+#error, #notice {
+  width: 100%;
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  padding: 13px;
+  position: absolute;
+}
+#error {  background-color: $error; }
+#notice { background-color: $notice; }
 
 /*
  * HEADER STYLES
@@ -271,7 +281,7 @@ section > div{
 
 }
 .main-objects div:hover::after {
-  background-size: 70%;
+  background-size: 55%;
 }
 .payments .number{
     color: $accent;

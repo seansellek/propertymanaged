@@ -1,7 +1,7 @@
 %h1 Your Dashboard
 %section.main-objects
   %div.payments
-    %span.number 1
+    %span.number #{@user.unpaid_invoices.length} 
     %span.description Payments waiting
   %div.service
     %span.number 2
