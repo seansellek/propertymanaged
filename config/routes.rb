@@ -16,9 +16,17 @@ Rails.application.routes.draw do
   # resources :invites 
   resources :properties
   # resources :dashboard
+  resources :occupancy_pictures
+
+  resources :pictures
   
   resources :tickets do
     resources :comments
+    resources :pictures
+  end
+
+  resources :property_tenants do
+    resources :occupancy_pictures
   end
 
   

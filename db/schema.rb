@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804230944) do
+ActiveRecord::Schema.define(version: 20150808004416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,29 @@ ActiveRecord::Schema.define(version: 20150804230944) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
+  end
+
+  create_table "occupancy_pictures", force: :cascade do |t|
+    t.string   "caption"
+    t.boolean  "before"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "property_tenant_id"
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string   "caption"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "ticket_id"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -99,6 +122,8 @@ ActiveRecord::Schema.define(version: 20150804230944) do
   add_foreign_key "invites", "landlords"
   add_foreign_key "invites", "properties"
   add_foreign_key "invites", "tenants"
+  add_foreign_key "occupancy_pictures", "property_tenants"
+  add_foreign_key "pictures", "tickets"
   add_foreign_key "properties", "landlords"
   add_foreign_key "property_tenants", "properties"
   add_foreign_key "property_tenants", "tenants"

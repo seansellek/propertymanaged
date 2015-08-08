@@ -40,4 +40,16 @@ FactoryGirl.define do
   factory :comment do
     body 'issue still not resolved'
   end
+
+  factory :picture do
+    caption 'my pic caption'
+    image Rack::Test::UploadedFile.new("#{Rails.root}/app/assets/images/file.jpg", "image/jpg")
+  end
+
+  factory :occupancy_picture do
+    caption 'my pic caption'
+    image Rack::Test::UploadedFile.new("#{Rails.root}/app/assets/images/file.jpg", "image/jpg")
+    property_tenant
+  end
+
 end
