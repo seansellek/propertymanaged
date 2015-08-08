@@ -14,68 +14,70 @@ RSpec.describe OccupancyPicturesController, type: :controller do
     end
 
 
-    # it "Renders 'new' view" do
-    #   login tenant
-    #   get 'new'
-    #   expect(response).to render_template(:new)
-    # end
+    it "Renders 'new' view" do
+      login landlord
+       get 'new', property_tenant_id: property_tenant.id
+      expect(response).to render_template(:new)
+    end
   end
 
-#  context 'POST #create' do
+  context 'POST #create' do
 
-#     it 'Assigns @picture to ticket' do
-#       login tenant
-#       post 'create', picture: attributes_for(:picture), ticket_id: ticket.id
-#       expect(assigns(:picture).ticket).to eq(ticket)
-#     end
+    it 'Assigns @occupancy_picture to property_tenant' do
+      login landlord
+      post 'create',  occupancy_picture: attributes_for(:occupancy_picture), property_tenant_id: property_tenant.id,  id: occupancy_picture.id
+      expect(assigns(:occupancy_picture).property_tenant).to eq(property_tenant)
+    end
 
-#     it 'Saves picture to database' do
-#       login tenant
-#       post 'create', picture: attributes_for(:picture), ticket_id: ticket.id
-#       expect(assigns(:picture).persisted?).to be_truthy
-#     end
-#   end
+    it 'Saves occupancy_picture to database' do
+      login landlord  
+      post 'create', property_tenant_id: property_tenant.id, id: occupancy_picture.id, occupancy_picture: attributes_for(:occupancy_picture)
+      expect(assigns(:occupancy_picture).persisted?).to be_truthy
+    end
+  end
 
-#   context 'GET #edit' do
+  context 'GET #edit' do
       
-#     it "renders 'edit' view" do
-#       login tenant
-#       get :edit, id: picture.id
-#       expect(response).to render_template :edit
-#     end
-#   end
+    it "renders 'edit' view" do
+      login landlord
+      get :edit,  property_tenant_id: property_tenant.id, id: occupancy_picture.id
+      expect(response).to render_template :edit
+    end
+  end
 
 
-#   context 'PUT #update' do
+  context 'PUT #update' do
   
-#     it 'retrieves picture from db and instantiates it as @picture' do
-#       login tenant
-#       get :edit, id: picture.id
-#       expect(assigns(:picture)).to eq(picture)
-#     end 
+    it 'retrieves occupancy_picture from db and instantiates it as @occupancy_picture' do
+      login landlord
+      occupancy_picture.before = true
+      occupancy_picture.save
+      put :update, property_tenant_id: occupancy_picture.property_tenant.id, id: occupancy_picture.id, occupancy_picture: { caption: 'new caption' }
+      expect(assigns(:occupancy_picture)).to eq(occupancy_picture)
+    end 
 
-#      it 'redirects to ticket' do
-#       login tenant
-#       picture.ticket_id = ticket
-#       picture.save
-#       put 'update', ticket_id: ticket.id, id: picture.id, picture: attributes_for(:picture, caption: 'some text', image: Rack::Test::UploadedFile.new("#{Rails.root}/app/assets/images/file.jpg", "image/jpg"))
-#       expect(response).to redirect_to ticket_path(ticket.id)
-#     end
-#   end
+     it 'redirects to Property' do
+      login landlord
+      occupancy_picture.property_tenant_id = property_tenant
+      occupancy_picture.save
+      put 'update', property_tenant_id: property_tenant.id, id: occupancy_picture.id, occupancy_picture: attributes_for(:occupancy_picture, caption: 'some text', image: Rack::Test::UploadedFile.new("#{Rails.root}/app/assets/images/file.jpg", "image/jpg"))
+      expect(response).to redirect_to property_path(property_tenant.id)
+    end
+  end
 
 
-#   context  "DELETE destroy " do
+  context  "DELETE destroy " do
 
-#     it "deletes the picture and redirects to tickets#index" do 
-#       login tenant
-#       picture.ticket_id = ticket
-#       picture.save
-#       expect{ delete :destroy, ticket_id: ticket.id, id: picture.id }.to change(Picture,:count).by(-1) 
-#       expect(response).to redirect_to ticket_path(ticket.id)
+    it "deletes the occupancy_picture and redirects to property" do 
+      login landlord
+      occupancy_picture.property_tenant_id = property_tenant
+      occupancy_picture.save
+      expect{ delete :destroy, property_tenant_id: property_tenant.id, id: occupancy_picture.id }.to change(OccupancyPicture,:count).by(-1) 
+      expect(response).to redirect_to property_path(property_tenant.id)
 
-#     end 
+    end 
 
-# end
+end
 
 
 

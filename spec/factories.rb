@@ -48,6 +48,7 @@ FactoryGirl.define do
 
   factory :occupancy_picture do
     caption 'my pic caption'
+    before true
     image Rack::Test::UploadedFile.new("#{Rails.root}/app/assets/images/file.jpg", "image/jpg")
     property_tenant
   end

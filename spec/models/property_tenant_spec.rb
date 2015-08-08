@@ -7,6 +7,8 @@ RSpec.describe PropertyTenant, type: :model do
   it { should belong_to :property }
   it { should belong_to :tenant }
   it { should respond_to :active }
+  it { should have_many :occupancy_pictures}
+  it { should respond_to :occupancy_pictures}
   its(:active) { should be true}
 
   it "allows a tenant to have multiple innactive Occupancies" do
