@@ -30,7 +30,7 @@
             %td= property.active_occupancy.tenant.name
             %td{class: (property.active_occupancy.paid? ? 'paid' : 'unpaid')}
             -unless property.active_occupancy.open_requests.empty?
-              count = property.active_occupancy.open_requests.length
+              - count = property.active_occupancy.open_requests.length
               %td.bad #{count} service request#{count == 1 ? '' : 's'}
             -else
               %td.good All clear!

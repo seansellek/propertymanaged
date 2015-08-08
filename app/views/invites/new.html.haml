@@ -1,5 +1,6 @@
 = form_for @invite, remote: true do |f|
   = f.hidden_field :property_id, :value => @invite.property_id
   = f.email_field :email, placeholder: 'Email'
+  = f.number_field :amount, placeholder: 'Monthly Rent'
   = f.submit 'Invite Tenant', id: 'invite-tenant'
   =link_to 'Cancel', dashboard_path, class: 'button', id: 'invite-close'

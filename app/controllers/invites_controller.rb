@@ -24,6 +24,6 @@ class InvitesController < ApplicationController
   def invite_params
     params.
       require(:invite).
-      permit(:email, :property_id)
+      permit(:email, :property_id, :amount)
   end
 end
