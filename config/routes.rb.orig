@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
 
   get 'invoices/show'
   get 'invoices/edit'
@@ -10,11 +9,6 @@ Rails.application.routes.draw do
     to: 'signatures#callbacks'
 
 
-=======
-  post '/signatures/callbacks',
-    to: 'signatures#callbacks'
-
->>>>>>> origin/hellosign
   root 'sessions#new'
 
   get 'login', to: 'sessions#new', as: 'login'
@@ -25,28 +19,35 @@ Rails.application.routes.draw do
   resources :comments
 
 
-
   resources :landlords
   resources :sessions
   # resources :invites
   resources :properties
   resources :tenants, except: :show
   # resources :dashboard
+<<<<<<< HEAD
   resources :signatures, only: [:new, :create] do
     collection do
       post 'callbacks'
     end
   end
 
-<<<<<<< HEAD
 
 
+=======
+  resources :occupancy_pictures
+
+  resources :pictures
+  
+>>>>>>> e56be0bbb42910b1105342b707de66728ba8f666
   resources :tickets do
     resources :comments
+    resources :pictures
   end
-=======
-    
->>>>>>> origin/hellosign
+
+  resources :property_tenants do
+    resources :occupancy_pictures
+  end
 
 
   get 'dashboard' => 'dashboard#show'
@@ -64,15 +65,6 @@ Rails.application.routes.draw do
 
 
 
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
->>>>>>> origin/hellosign
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

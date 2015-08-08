@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805025632) do
+ActiveRecord::Schema.define(version: 20150808201102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 20150805025632) do
   add_index "comments", ["author_type", "author_id"], name: "index_comments_on_author_type_and_author_id", using: :btree
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
 
+  create_table "contracts", force: :cascade do |t|
+    t.integer  "property_tenant_id"
+    t.boolean  "signed",             default: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "contracts", ["property_tenant_id"], name: "index_contracts_on_property_tenant_id", using: :btree
+
   create_table "invites", force: :cascade do |t|
     t.string   "email"
     t.integer  "property_id"
@@ -38,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150805025632) do
     t.string   "token"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "amount"
   end
 
   add_index "invites", ["landlord_id"], name: "index_invites_on_landlord_id", using: :btree
@@ -62,6 +72,29 @@ ActiveRecord::Schema.define(version: 20150805025632) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
+  end
+
+  create_table "occupancy_pictures", force: :cascade do |t|
+    t.string   "caption"
+    t.boolean  "before"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "property_tenant_id"
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string   "caption"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "ticket_id"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -110,10 +143,13 @@ ActiveRecord::Schema.define(version: 20150805025632) do
 
   add_index "tickets", ["property_tenant_id"], name: "index_tickets_on_property_tenant_id", using: :btree
 
+  add_foreign_key "contracts", "property_tenants"
   add_foreign_key "invites", "landlords"
   add_foreign_key "invites", "properties"
   add_foreign_key "invites", "tenants"
   add_foreign_key "invoices", "property_tenants"
+  add_foreign_key "occupancy_pictures", "property_tenants"
+  add_foreign_key "pictures", "tickets"
   add_foreign_key "properties", "landlords"
   add_foreign_key "property_tenants", "properties"
   add_foreign_key "property_tenants", "tenants"

@@ -4,6 +4,7 @@ class Ticket < ActiveRecord::Base
   has_one :tenant, through: :property_tenant
   has_one :landlord, through: :property_tenant
   has_many :comments, as: :commentable
+  has_many :pictures
 
   def open?
     self.status

@@ -25,16 +25,23 @@ Rails.application.routes.draw do
   resources :properties
   resources :tenants, except: :show
   # resources :dashboard
+  resources :occupancy_pictures
   resources :signatures, only: [:new, :create] do
     collection do
       post 'callbacks'
     end
   end
+  resources :pictures
 
 
 
   resources :tickets do
     resources :comments
+    resources :pictures
+  end
+
+  resources :property_tenants do
+    resources :occupancy_pictures
   end
 
 
