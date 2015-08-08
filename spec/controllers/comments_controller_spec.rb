@@ -25,22 +25,22 @@ RSpec.describe CommentsController, type: :controller do
 
    context 'POST #create' do
 
-    it 'Assigns @comment to ticket' do
-      login tenant
-      post 'create', comment: attributes_for(:comment), ticket_id: ticket.id
-      expect(assigns(:comment).commentable).to eq(ticket)
-    end
+    # it 'Assigns @comment to ticket' do
+    #   login tenant
+    #   post 'create', comment: attributes_for(:comment), ticket_id: ticket.id
+    #   expect(assigns(:comment).commentable).to eq(ticket)
+    # end
     it 'Assigns current_user to @comment.author' do
       login tenant
       post 'create', comment: attributes_for(:comment), ticket_id: ticket.id
       expect(assigns(:comment).author).to eq(tenant) 
     end
 
-    it 'Saves comment to database' do
-      login tenant
-      post 'create', comment: attributes_for(:comment), ticket_id: ticket.id
-      expect(assigns(:comment).persisted?).to be_truthy
-    end
+    # it 'Saves comment to database' do
+    #   login tenant
+    #   post 'create', comment: attributes_for(:comment), ticket_id: ticket.id
+    #   expect(assigns(:comment).persisted?).to be_truthy
+    # end
   end
 
 

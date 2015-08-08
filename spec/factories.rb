@@ -41,6 +41,8 @@ FactoryGirl.define do
     name 'Jack Tenant'
   end
   factory :contract do
-
+  end
+  factory :comment do
+    body 'hello'
   end
 end

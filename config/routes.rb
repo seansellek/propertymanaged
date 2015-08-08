@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'tickets/:id/close', to: 'tickets#close'
 
+  resources :comments
   resources :landlords
   resources :sessions
   # resources :invites 
