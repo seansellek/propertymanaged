@@ -25,6 +25,11 @@ class PropertyTenant < ActiveRecord::Base
     end
   end
 
+  def open_requests
+    tickets.active
+
+  end
+
    private
 
   def one_active_per_tenant

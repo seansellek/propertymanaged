@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 #ruby=2.2-head
 #ruby-gemset=propertymanaged
 
-
+gem 'opal-rails'
+gem 'opal-browser'
 gem 'rack_session_access'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'

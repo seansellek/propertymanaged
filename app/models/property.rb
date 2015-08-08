@@ -10,4 +10,10 @@ class Property < ActiveRecord::Base
 		output << zip  if zip
 		return output
 	end
+	def active_occupancy
+		property_tenants.find_by(active: true)
+	end
+	def active_occupancy?
+		!!active_occupancy
+	end
 end

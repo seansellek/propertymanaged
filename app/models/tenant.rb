@@ -1,4 +1,5 @@
 class Tenant < ActiveRecord::Base
+  include Gravatar
 	has_secure_password
   has_many :property_tenants
 	has_many :properties, through: :property_tenants

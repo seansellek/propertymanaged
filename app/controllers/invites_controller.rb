@@ -4,6 +4,7 @@ class InvitesController < ApplicationController
   def new
     @invite = Invite.new
     @invite.property_id = params[:property_id]
+    render layout: false
   end
   def create
     @invite = Invite.new(invite_params)

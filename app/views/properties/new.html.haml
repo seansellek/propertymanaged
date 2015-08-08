@@ -1,31 +1,13 @@
-%h1 New Property
-%p Find me in app/views/properties/new.html.haml
-
+%h1.headline New Property
 = form_for @property do |f|
-  = f.label :name, 'Name:'
-  %br
-  = f.text_field :name
-  %br
-  = f.label :address1, 'Address 1:'
-  %br
-  = f.text_field :address1
-  %br
-  = f.label :address2, 'Address 2:'
-  %br
-  = f.text_field :address2
-  %br
-  = f.label :city, 'City:'
-  %br
-  = f.text_field :city
-  %br
-  = f.label :state, 'State:'
-  %br
-  = f.text_field :state
-  %br
-  = f.label :zip, 'Zip:'
-  %br
-  = f.text_field :zip
-  = f.submit 'Create Property'
+  %ol
+    %li= f.text_field :name, placeholder: 'Name'
+    %li= f.text_field :address1, placeholder: 'Address 1'
+    %li= f.text_field :address2, placeholder: 'Address 2'
+    %li= f.text_field :city, placeholder: 'City'
+    %li= f.text_field :state, placeholder: 'State'
+    %li= f.text_field :zip, placeholder: 'Zip'
+    %li= f.submit 'Create Property'
 
 %FORM
   %INPUT{:Type => "button", :VALUE => "Back", :onClick => "history.go(-1);return true;"}/

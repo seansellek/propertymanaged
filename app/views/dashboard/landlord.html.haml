@@ -1,3 +1,8 @@
+/ .modal
+/   %h3 Invite a Tenant!
+/   .invite-tenant-modal
+/     =render 'invites/new'
+#popup-form{style: 'display:none;'}
 %h1 Your Dashboard
 %section.main-objects
   %div.payments
@@ -7,7 +12,7 @@
     %span.number #{@user.open_requests.length}
     %span.description Service requests
   %div.agreements
-    %span.number 3
+    %span.number #{@user.active_contracts.length}
     %span.description Active contracts
 %section.secondary-objects
   %div.card.properties
@@ -18,21 +23,22 @@
         %th Tenant
         %th Paid?
         %th Status
-      %tr.odd
-        %td Beach House
-        %td Clark Kent
-        %td.paid 
-        %td.bad 1 service request
-      %tr
-        %td Lake House
-        %td Bruce Wayne
-        %td.unpaid 
-        %td.good all clear!
-      %tr.odd
-        %td Old House
-        %td -
-        %td -
-        %td -
+      -@user.properties.each_with_index do |property,i|
+        %tr{class: ( i % 2 != 0 ? nil : 'odd')}
+          %td= link_to property.name, property_path(property)
+          - if property.active_occupancy?
+            %td= property.active_occupancy.tenant.name
+            %td{class: (property.active_occupancy.paid? ? 'paid' : 'unpaid')}
+            -unless property.active_occupancy.open_requests.empty?
+              count = property.active_occupancy.open_requests.length
+              %td.bad #{count} service request#{count == 1 ? '' : 's'}
+            -else
+              %td.good All clear!
+          - else
+            %td= link_to 'Add', new_invite_path(property), class: 'button invite-tenant'
+            %td -
+            %td -
+    = link_to 'Add Property', new_property_path, class: 'button'
 
 
   %div.card.tickets

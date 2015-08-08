@@ -6,4 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 landlord = Landlord.create(name: 'Sean', email: 'me@seansellek.com', password: 'asdfghjk', password_confirmation: 'asdfghjk')
-property = Property.create(landlord_id: landlord.id, name: 'home')
+property = Property.create(landlord_id: landlord.id, name: 'Beach home')
+
+

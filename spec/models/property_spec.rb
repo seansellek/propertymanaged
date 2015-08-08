@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Property, type: :model do
-  let(:property) { build :property }
+  let(:property) { create :property }
   subject { property }
 
   it {should respond_to(:name)}
@@ -18,4 +18,10 @@ RSpec.describe Property, type: :model do
   it { should have_many :property_tenants}
 
   it { should belong_to :landlord }
+
+  it "reports current active occupancy" do
+    occupancy = create :property_tenant
+    property = occupancy.property
+    expect(property.active_occupancy).to eq(occupancy)
+  end
 end

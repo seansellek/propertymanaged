@@ -12,6 +12,8 @@ class SessionsController < ApplicationController
     if @user
       session[:user_id] = @user.id
       session[:user_type] = params['user_type']
+      flash[:error] = nil
+      flash[:notice] = nil
       redirect_to dashboard_path
       return
     end

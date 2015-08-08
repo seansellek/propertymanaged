@@ -39,6 +39,10 @@ a {
     text-decoration: none;
     color: $light-text;
 }
+.card a.button {
+  position: absolute;
+  bottom: 0;
+}
 #error, #notice {
   width: 100%;
   font-size: 18px;
@@ -46,6 +50,8 @@ a {
   text-align: center;
   padding: 13px;
   position: absolute;
+  transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s all;
+  z-index: -2;
 }
 #error {  background-color: $error; }
 #notice { background-color: $notice; }
@@ -366,6 +372,12 @@ table .unpaid {
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }
+.card.properties td > a.button {
+  font-size: 14px;
+  padding: 5px;
+  background-color: $default;
+  position: static;
+}
 .tickets td {
   height: 75px;
   position: relative;
@@ -390,5 +402,12 @@ table .unpaid {
   background-repeat: no-repeat;
   background-position: 50% 95%;
   color: $default
-
+}
+#invite-form {
+  margin-top: 50px;
+  position: relative;
+}
+#invite-close {
+  background:none;
+  color: $light-text;
 }

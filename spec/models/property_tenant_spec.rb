@@ -78,6 +78,14 @@ RSpec.describe PropertyTenant, type: :model do
     PropertyTenant.generate_invoices
     expect(Invoice.all.length).to be == PropertyTenant.all.length
   end
+  it 'retrieves open tickets' do
+    ticket = create :ticket
+    ticket2 = create :ticket, status: false
+    ticket.property_tenant = property_tenant
+    ticket2.property_tenant = property_tenant
+    expect(property_tenant.open_requests).to include(ticket)
+    expect(property_tenant.open_requests).to_not include(ticket2)
+  end
 
   # it "responds to invoiced? with true or false" do
   #   expect(property_tenant).to respond_to(:invoiced?)

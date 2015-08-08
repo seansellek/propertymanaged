@@ -1,8 +1,5 @@
-= form_for @invite do |f|
+= form_for @invite, remote: true do |f|
   = f.hidden_field :property_id, :value => @invite.property_id
-  = f.label :email
-  = f.email_field :email
-  = f.submit 'Invite Tenant'
-
-%FORM
-  %INPUT{:Type => "button", :VALUE => "Back", :onClick => "history.go(-1);return true;"}/
+  = f.email_field :email, placeholder: 'Email'
+  = f.submit 'Invite Tenant', id: 'invite-tenant'
+  =link_to 'Cancel', dashboard_path, class: 'button', id: 'invite-close'
