@@ -1,29 +1,20 @@
 require 'opal'
 require 'opal_ujs'
 require 'turbolinks'
-require 'jquery'
 require 'opal-jquery'
-require 'native'
+# require 'native'
 require_tree '.'
-##
-# Error hiding
-##
+
+
 class Timeout
   def initialize(time=0, &block)
-    'setTimeout(function(){#{block.call}}, time)'
+    `setTimeout(function(){#{block.call}}, time)`
   end
 end
-def hide_error 
+
+hide_error = Proc.new do
   Element.find('#error').css('margin-top', '-50px')
 end
-def hide_notice 
-  Element.find('#notice').css('margin-top', '-50px')
-end
-Timeout.new 3000 do
-    hide_error
-    hide_notice
-end
-
 displayer = Proc.new do |event|
   event.prevent
   path = event.target.attr(:href)
@@ -53,4 +44,4 @@ Document.ready? do
   Element.find('#popup-form').on(:click, '#invite-close', &form_hide)
   Element.find('#popup-form').on(:submit, &form_submit)
 end
-
+Timeout.new(5000, &hide_error)
