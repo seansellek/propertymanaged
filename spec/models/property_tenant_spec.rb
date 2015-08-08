@@ -86,6 +86,10 @@ RSpec.describe PropertyTenant, type: :model do
     expect(property_tenant.open_requests).to include(ticket)
     expect(property_tenant.open_requests).to_not include(ticket2)
   end
+  it 'responds to paid? with payment status' do
+    PropertyTenant.generate_invoices
+    expect(property_tenant.paid).to be_falsey
+  end
 
   # it "responds to invoiced? with true or false" do
   #   expect(property_tenant).to respond_to(:invoiced?)
