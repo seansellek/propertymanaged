@@ -1,0 +1,11 @@
+@media screen and ( max-width: 1500px ) {
+  html body .container {
+    width: 80%;
+  }
+}
+
+@media screen and ( max-width: 1250px ) {
+  .main-objects a::after {
+    height: 55%;
+  }
+}

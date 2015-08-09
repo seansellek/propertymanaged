@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150808233400) do
+ActiveRecord::Schema.define(version: 20150809043135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -142,15 +142,4 @@ ActiveRecord::Schema.define(version: 20150808233400) do
 
   add_index "tickets", ["property_tenant_id"], name: "index_tickets_on_property_tenant_id", using: :btree
 
-  add_foreign_key "contracts", "property_tenants"
-  add_foreign_key "invites", "landlords"
-  add_foreign_key "invites", "properties"
-  add_foreign_key "invites", "tenants"
-  add_foreign_key "invoices", "property_tenants"
-  add_foreign_key "occupancy_pictures", "property_tenants"
-  add_foreign_key "pictures", "tickets"
-  add_foreign_key "properties", "landlords"
-  add_foreign_key "property_tenants", "properties"
-  add_foreign_key "property_tenants", "tenants"
-  add_foreign_key "tickets", "property_tenants"
 end

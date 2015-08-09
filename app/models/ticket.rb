@@ -3,6 +3,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :property_tenant
   has_one :tenant, through: :property_tenant
   has_one :landlord, through: :property_tenant
+  has_one :property, through: :property_tenant
   has_many :comments, as: :commentable
   scope :active, -> { where(status: true )}
   has_many :pictures
