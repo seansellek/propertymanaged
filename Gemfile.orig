@@ -2,9 +2,12 @@ source 'https://rubygems.org'
 #ruby=2.2-head
 #ruby-gemset=propertymanaged
 
+<<<<<<< HEAD
+=======
 
 gem 'hellosign-ruby-sdk'
 #hellosign api
+>>>>>>> master
 gem 'rack_session_access'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
@@ -64,6 +67,7 @@ group :test do
   gem 'capybara'
   gem 'simplecov'
 end
+<<<<<<< HEAD
 
 group :development do
   gem "guard", ">= 2.2.2",       :require => false
@@ -71,3 +75,7 @@ group :development do
   gem "rack-livereload"
   gem "rb-fsevent",              :require => false
 end
+
+
+=======
+>>>>>>> master

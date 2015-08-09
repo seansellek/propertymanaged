@@ -7,9 +7,12 @@ RSpec.describe PropertyTenant, type: :model do
   it { should belong_to :property }
   it { should belong_to :tenant }
   it { should respond_to :active }
-  it { should have_many :occupancy_pictures}
+<<<<<<< HEAD
   it { should have_many :invoices}
+=======
+  it { should have_many :occupancy_pictures}
   it { should respond_to :occupancy_pictures}
+>>>>>>> e56be0bbb42910b1105342b707de66728ba8f666
   its(:active) { should be true}
 
   it "only accepts duedate between 1-28" do
@@ -79,16 +82,6 @@ RSpec.describe PropertyTenant, type: :model do
     property_tenant.invoice
     PropertyTenant.generate_invoices
     expect(Invoice.all.length).to be == PropertyTenant.all.length
-  end
-  it 'retrieves open tickets' do
-    ticket = create :ticket, property_tenant_id: property_tenant.id
-    ticket2 = create :ticket, status: false, property_tenant_id: property_tenant.id
-    expect(property_tenant.open_requests).to include(ticket)
-    expect(property_tenant.open_requests).to_not include(ticket2)
-  end
-  pending'responds to paid? with payment status' do
-    PropertyTenant.generate_invoices
-    expect(property_tenant.paid).to be_falsey
   end
 
   # it "responds to invoiced? with true or false" do

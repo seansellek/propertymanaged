@@ -1,4 +1,5 @@
 FactoryGirl.define do
+  #master
   factory :invite do
     email "me@seansellek.com"
     token 'd76770d7af781d25166df6cd3b120ee734893fd2'
@@ -45,4 +46,17 @@ FactoryGirl.define do
   factory :comment do
     body 'hello'
   end
+
+  factory :picture do
+    caption 'my pic caption'
+    image Rack::Test::UploadedFile.new("#{Rails.root}/app/assets/images/file.jpg", "image/jpg")
+  end
+
+  factory :occupancy_picture do
+    caption 'my pic caption'
+    before true
+    image Rack::Test::UploadedFile.new("#{Rails.root}/app/assets/images/file.jpg", "image/jpg")
+    property_tenant
+  end
+
 end

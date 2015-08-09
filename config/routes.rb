@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+
   get 'invoices/show'
   get 'invoices/edit'
 
   get 'tickets/index'
+
+  post '/signatures/callbacks',
+    to: 'signatures#callbacks'
+
 
   root 'sessions#new'
  
@@ -11,14 +16,33 @@ Rails.application.routes.draw do
   get 'tickets/:id/close', to: 'tickets#close'
 
   resources :comments
+
+
   resources :landlords
   resources :sessions
   # resources :invites 
   resources :properties
   resources :tenants, except: :show
   # resources :dashboard
+  resources :occupancy_pictures
   resources :tickets
+  resources :signatures, only: [:new, :create] do
+    collection do
+      post 'callbacks'
+    end
+  end
+  resources :pictures
 
+
+
+  resources :tickets do
+    resources :comments
+    resources :pictures
+  end
+
+  resources :property_tenants do
+    resources :occupancy_pictures
+  end
 
 
   get 'dashboard' => 'dashboard#show'
@@ -28,6 +52,11 @@ Rails.application.routes.draw do
   get 'properties/:property_id/invite', to: 'invites#new'
   post 'invites' => 'invites#create'
   get 'tenants/signup', to: 'tenants#new'
+
+
+
+
+
 
 
   

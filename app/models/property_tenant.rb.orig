@@ -2,8 +2,11 @@ class PropertyTenant < ActiveRecord::Base
   belongs_to :property
   belongs_to :tenant
   has_many :tickets
-  has_many :occupancy_pictures
+<<<<<<< HEAD
   has_one :contract
+=======
+  has_many :occupancy_pictures
+>>>>>>> master
   has_many :invoices
   has_one :landlord, through: :property
   scope :active, -> {where active: true}

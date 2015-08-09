@@ -49,11 +49,14 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+<<<<<<< HEAD
+    coderay (1.1.0)
+=======
     climate_control (0.0.3)
+      activesupport (>= 3.0)
     cocaine (0.5.7)
       climate_control (>= 0.0.3, < 1.0)
-    coderay (1.1.0)
-      activesupport (>= 3.0)
+>>>>>>> master
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -80,10 +83,13 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
-    faraday (0.9.1)
-      multipart-post (>= 1.2, < 3)
+<<<<<<< HEAD
     ffi (1.9.10)
     formatador (0.2.5)
+=======
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
+>>>>>>> master
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     guard (2.13.0)
@@ -140,19 +146,24 @@ GEM
     mini_portile (0.6.2)
     minitest (5.7.0)
     multi_json (1.11.2)
-    multipart-post (2.0.0)
+<<<<<<< HEAD
     nenv (0.2.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     notiffany (0.0.7)
+      nenv (~> 0.1)
+      shellany (~> 0.0)
+=======
+    multipart-post (2.0.0)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
+    paperclip (4.3.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
-      nenv (~> 0.1)
-      shellany (~> 0.0)
-    paperclip (4.3.0)
+>>>>>>> master
     pg (0.18.2)
     pry (0.10.1)
       coderay (~> 1.1.0)

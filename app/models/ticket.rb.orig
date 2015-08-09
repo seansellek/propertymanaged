@@ -1,11 +1,13 @@
 class Ticket < ActiveRecord::Base
-  validates :title, :description, :status, :property_tenant, presence: true
+  validates :title, :description, :property_tenant, presence: true
   belongs_to :property_tenant
-<<<<<<< HEAD
-  has_many :comments, as: :commentable
-=======
   has_one :tenant, through: :property_tenant
   has_one :landlord, through: :property_tenant
+<<<<<<< HEAD
+  scope :active, -> { where(status: true )}
+=======
+  has_many :comments, as: :commentable
+  has_many :pictures
 >>>>>>> master
 
   def open?
