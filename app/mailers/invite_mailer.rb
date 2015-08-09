@@ -5,6 +5,10 @@ class InviteMailer < ApplicationMailer
     @path = path
     mail(to: @invite.email, subject: "Your registration link")
   end
+  def existing_tenant_invite invite
+    @invite = invite
+    mail(to: @invite.email, subject: "Welcome back to Kito!")
+  end
 
   def send_invoice invoice
     @invoice = invoice

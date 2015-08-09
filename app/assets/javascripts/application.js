@@ -20,6 +20,9 @@ ready = function() {
     $('.properties').on('click', '.invite-tenant', displayer);
     $('#popup-form').on('click', '#invite-close', formHide);
     $('#popup-form').on('submit', formSubmit);
+    setTimeout(hideError, 3000);
+    setTimeout(hideNotice, 3000);
+    $('#popup-form').on('input propertychange paste', '#invite_amount', currency);
 };
 
 $(document).ready(ready);
@@ -44,4 +47,20 @@ function formHide(event) {
 
 function formSubmit(event) {
     $('#popup-form').slideUp();
+    console.log(event)
 };
+
+function hideError() {
+    $('#error').css('margin-top', '-50px');
+};
+
+function hideNotice() {
+    $('#notice').css('margin-top', '-50px');
+}
+
+function currency(event) {
+    console.log('hello!');
+    $('#invite_amount').autoNumeric('init', {
+        aSign: '$'
+    });
+}

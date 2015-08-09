@@ -7,7 +7,8 @@ class PropertyTenant < ActiveRecord::Base
   has_many :invoices
   has_one :landlord, through: :property
   scope :active, -> {where active: true}
-  # before_create :invoice
+  after_create :invoice
+
 
   validates :duedate, numericality: { less_than: 29, greater_than: 0}
   validate :one_active_per_tenant, :one_active_per_property
@@ -31,7 +32,8 @@ class PropertyTenant < ActiveRecord::Base
     tickets.empty? ? [] : tickets.active
   end
   def paid?
-    true
+
+    
   end
 
    private
