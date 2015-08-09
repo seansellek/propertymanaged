@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 #ruby=2.2-head
 #ruby-gemset=propertymanaged
+gem 'cocaine'
 gem 'mimemagic'
 gem 'rails_12factor'
 gem 'hellosign-ruby-sdk'
