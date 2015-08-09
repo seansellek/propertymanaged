@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 #ruby=2.2-head
 #ruby-gemset=propertymanaged
 
-
+gem 'rails_12factor'
 gem 'hellosign-ruby-sdk'
 #hellosign api
 gem 'rack_session_access'
