@@ -2,7 +2,13 @@ source 'https://rubygems.org'
 #ruby=2.2-head
 #ruby-gemset=propertymanaged
 
+gem 'cocaine'
+gem 'mimemagic'
+gem 'rails_12factor'
+
+
 gem 'immigrant'
+
 gem 'hellosign-ruby-sdk'
 #hellosign api
 gem 'rack_session_access'

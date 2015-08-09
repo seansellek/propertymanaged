@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :require_logged_in
-  before_action :get_ticket, only: [:create]
+  before_action :get_ticket, only: [:new]
   
   def index
   end
@@ -10,17 +10,17 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @comment = Comment.new
+    @comment = current_user.comments.new
+    @comment.commentable = @ticket
   end
 
   def create
     @comment = current_user.comments.new(comment_params)
-    @comment.commentable = @ticket
     #@comment = current_user.current_occupancy.tickets.comment.new(comment_params)
     if @comment.save
       #TODO: create notification
       flash[:notice] = "The Ticket is successfully saved!"
-      redirect_to ticket_path(@ticket)
+      redirect_to ticket_path(@comment.commentable_id)
     else
       render :back
     end
@@ -49,7 +49,7 @@ class CommentsController < ApplicationController
   #use strong parameters to protect from mass assignment
   def comment_params
     params.require(:comment).
-      permit(:author, :body)
+      permit(:author, :body, :commentable_id, :commentable_type)
   end
 
   def get_ticket

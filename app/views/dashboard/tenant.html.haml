@@ -1,3 +1,61 @@
-%h1 Welcome, Tenant!
+%h1 Welcome, #{current_user.name}!
 
-= link_to 'Create Ticket', new_ticket_path
+%section.main-objects
+  %a.payments{href: invoices_path}
+    -# %span.number #{@user.unpaid_invoices.length}
+    %span.description Payments
+  %a.service{href: new_ticket_path}
+    -# %span.number #{@user.open_requests.length}
+    %span.description New Service Request
+  %a.agreements
+    %span.number
+    %span.description Active contracts
+
+%div.card.properties
+  %h2 Properties
+  %table
+    %tr
+      %th Property
+      %th Landlord
+      %th Paid?
+      %th Status
+    -@user.properties.each_with_index do |property,i|
+      %tr{class: ( i % 2 != 0 ? nil : 'odd')}
+        %td= link_to property.name, property_path(property)
+        - if property.active_occupancy?
+          %td= property.active_occupancy.landlord.name
+          %td{class: (property.active_occupancy.paid? ? 'paid' : 'unpaid')}
+          -unless property.active_occupancy.open_requests.empty?
+            - count = property.active_occupancy.open_requests.length
+            %td.bad #{count} service request#{count == 1 ? '' : 's'}
+          -else
+            %td.good All clear!
+        - else
+          %td -
+          %td -
+
+
+
+%div.card.tickets
+  %h2 Service Requests
+  %table
+    %tr
+      %th Property
+      %th Issue
+      %th Status
+    %tr.odd
+      %td Property
+      %td
+        %h3 Plumbing Broke
+        %p When I flush the toilet bad stuff happens. Seriously.
+      %td
+        %div.status.bad Open
+        %div.comments 2
+    %tr
+      %td asd
+      %td
+        %h3 Roof is leaking
+        %p Sometimes I think it rains inside more than it rains outside.
+      %td
+        %div.status.good Closed
+        %div.comments 15

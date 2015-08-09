@@ -1,10 +1,15 @@
 class TicketsController < ApplicationController
   before_action :require_logged_in
   before_action :require_tenant, only: [:new, :create, :update]
-  before_action :require_owner, except: [:new, :create]
+  before_action :require_owner, except: [:new, :create, :index, :close]
 
   
   def index
+    @tickets = current_user.tickets
+  end
+
+  def show
+    
   end
 
   def new
@@ -36,6 +41,8 @@ class TicketsController < ApplicationController
  def close
     @ticket = Ticket.find(params['id'])
     @ticket.close
+    @ticket.save
+    redirect_to dashboard_path
  end
 
  def show

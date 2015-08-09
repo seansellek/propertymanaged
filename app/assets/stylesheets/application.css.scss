@@ -36,7 +36,7 @@ html {
 }
 body {
   width: 100%;
-  
+
 }
 
 a {
@@ -146,7 +146,7 @@ header {
         a {
           color: white;
           height: 50px;
-          
+
 
           font-size: 20px;
           margin: 15px;
@@ -277,7 +277,11 @@ section > div, section > a{
   bottom: 25px;
   left: 25px;
 }
+<<<<<<< HEAD
+.main-objects div::after,.main-objects a::after {
+=======
 .main-objects a::after {
+>>>>>>> 1b386d602214987c7cf06cf60e6e2e555f3bca5a
   content:'';
   display: block;
   float: right;
@@ -291,7 +295,11 @@ section > div, section > a{
   // transition-delay: 0.3s;
 
 }
+<<<<<<< HEAD
+.main-objects div:hover::after, .main-objects a:hover::after {
+=======
 .main-objects a:hover::after {
+>>>>>>> 1b386d602214987c7cf06cf60e6e2e555f3bca5a
   background-size: 55%;
 }
 .payments .number{
@@ -325,6 +333,11 @@ section > div, section > a{
   box-sizing: border-box;
   // overflow-y: scroll;
 }
+
+.secondary-objects .full {
+  width: 100%;
+  overflow: auto;
+}
 .secondary-objects div h2 {
   font-size: 18px;
   color: $dark-text;
@@ -341,7 +354,7 @@ section > div, section > a{
   // overflow: scrolsl;
 }
 table tr {
-  
+
 }
 table tr:hover td {
   border-top: 0.5px $default solid;

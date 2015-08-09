@@ -6,6 +6,7 @@ class Landlord < ActiveRecord::Base
   has_many :contracts, through: :property_tenants
   has_many :tickets, through: :property_tenants
   has_many :invoices, through: :property_tenants
+  has_many(:comments, { :as => :author} )
   has_secure_password
 
   def unpaid_invoices 
