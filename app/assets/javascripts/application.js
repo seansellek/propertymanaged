@@ -23,6 +23,10 @@ ready = function() {
     setTimeout(hideError, 3000);
     setTimeout(hideNotice, 3000);
     $('#popup-form').on('input propertychange paste', '#invite_amount', currency);
+    $('.back_link').click(function() {
+        window.history.back();
+        return false;
+    });
 };
 
 $(document).ready(ready);

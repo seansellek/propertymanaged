@@ -38,6 +38,10 @@ class TicketsController < ApplicationController
     @ticket.close
  end
 
+ def show
+    @ticket = Ticket.find(params['id'])
+ end
+
   private
   #use strong parameters to protect from mass assignment
   def ticket_params
