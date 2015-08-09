@@ -10,8 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *
  *= require_tree .
  *= require_self
+ *
  */
 $font-stack: Nunito, Helvetica-Neue, Helvetica, sans-serif;
 $content-bg: #ffffff;
@@ -23,6 +25,8 @@ $error: #fb5c5d;
 $notice: #f7931e;
 $default: #5d9bfb;
 $accent: #6fd64b;
+
+
 
 html {
     font-family: $font-stack;
@@ -273,7 +277,11 @@ section > div, section > a{
   bottom: 25px;
   left: 25px;
 }
+<<<<<<< HEAD
 .main-objects div::after,.main-objects a::after {
+=======
+.main-objects a::after {
+>>>>>>> 1b386d602214987c7cf06cf60e6e2e555f3bca5a
   content:'';
   display: block;
   float: right;
@@ -287,7 +295,11 @@ section > div, section > a{
   // transition-delay: 0.3s;
 
 }
+<<<<<<< HEAD
 .main-objects div:hover::after, .main-objects a:hover::after {
+=======
+.main-objects a:hover::after {
+>>>>>>> 1b386d602214987c7cf06cf60e6e2e555f3bca5a
   background-size: 55%;
 }
 .payments .number{
@@ -402,7 +414,8 @@ table .unpaid {
   padding-top: 30px;
   background-repeat: no-repeat;
   background-position: 50% 95%;
-  color: $default
+  color: $default;
+  display: block;
 }
 #invite-form {
   margin-top: 50px;
@@ -412,3 +425,18 @@ table .unpaid {
   background:none;
   color: $light-text;
 }
+
+
+@media screen and ( max-width: 1500px ) {
+  html body .container {
+    width: 80%;
+  }
+}
+
+@media screen and ( max-width: 1250px ) {
+  .main-objects a::after {
+    height: 55%;
+  }
+}
+
+

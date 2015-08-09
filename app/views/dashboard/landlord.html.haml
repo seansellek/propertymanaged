@@ -5,13 +5,13 @@
 #popup-form{style: 'display:none;'}
 %h1 Your Dashboard
 %section.main-objects
-  %div.payments
+  %a.payments{href: ''}
     %span.number #{@user.unpaid_invoices.length} 
     %span.description Payments waiting
-  %div.service
+  %a.service{href: tickets_path}
     %span.number #{@user.open_requests.length}
     %span.description Service requests
-  %div.agreements
+  %a.agreements{href: ''}
     %span.number #{@user.active_contracts.length}
     %span.description Active contracts
 %section.secondary-objects
@@ -48,21 +48,18 @@
         %th Property
         %th Issue
         %th Status
-      %tr.odd
-        %td Beach House
-        %td
-          %h3 Plumbing Broke
-          %p When I flush the toilet bad stuff happens. Seriously.
-        %td
-          %div.status.bad Open
-          %div.comments 2
-      %tr
-        %td Old House
-        %td
-          %h3 Roof is leaking
-          %p Sometimes I think it rains inside more than it rains outside.
-        %td
-          %div.status.good Closed
-          %div.comments 15
+      - current_user.tickets.each_with_index do |ticket, i|
+        %tr{class: ( i % 2 != 0 ? nil : 'odd')}
+          %td= link_to ticket.property.name, property_path(ticket.property)
+          %td
+            %a{href: ticket_path(ticket)}
+              %h3= ticket.title
+            %p= link_to ticket.description, ticket_path(ticket)
+          %td
+            -if ticket.status
+              %div.status.bad Open
+            -else
+              %div.status.good Closed
+            %a.comments{href: ticket_comments_path(ticket)}= ticket.comments.count
 
     

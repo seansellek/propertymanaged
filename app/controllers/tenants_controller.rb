@@ -21,6 +21,7 @@ class TenantsController < ApplicationController
     @propertytenant= PropertyTenant.new
     @propertytenant.tenant = @tenant
     @propertytenant.property = @invite.property
+    @propertytenant.rate = @invite.amount
     @propertytenant.save
     @invite.destroy
     set_current_user @tenant
