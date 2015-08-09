@@ -8,16 +8,16 @@ RSpec.describe CommentsController, type: :controller do
 
   
   context 'GET #new' do
-    it 'Instantiates a new comment' do
+    before(:each) do
       login tenant
-      get 'new'
+      get 'new', ticket_id: ticket.id
+    end
+    it 'Instantiates a new comment' do
       expect(assigns[:comment]).to be_a(Comment)
     end
 
 
     it "Renders 'new' view" do
-      login tenant
-      get 'new'
       expect(response).to render_template(:new)
     end
   end
@@ -32,7 +32,7 @@ RSpec.describe CommentsController, type: :controller do
     # end
     it 'Assigns current_user to @comment.author' do
       login tenant
-      post 'create', comment: attributes_for(:comment), ticket_id: ticket.id
+      post 'create', comment: attributes_for(:comment, commentable_id: ticket.id, commentable_type: 'Ticket')
       expect(assigns(:comment).author).to eq(tenant) 
     end
 

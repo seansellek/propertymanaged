@@ -2,6 +2,7 @@ class TicketsController < ApplicationController
   before_action :require_logged_in
   before_action :require_tenant, only: [:new, :create, :update]
   before_action :require_owner, except: [:new, :create, :index, :close]
+  before_action :require_landlord_close, only: [:close]
 
   
   def index
@@ -39,6 +40,7 @@ class TicketsController < ApplicationController
   end
 
  def close
+  byebug
     @ticket = Ticket.find(params['id'])
     @ticket.close
     @ticket.save
@@ -61,6 +63,15 @@ class TicketsController < ApplicationController
     # byebug
     unless @ticket.property_tenant.send(current_user_type) == current_user
       flash[:error]="That's not your ticket!"
+      redirect_to dashboard_path
+      return
+    end
+  end
+
+  def require_landlord_close
+    @ticket = Ticket.find(params['id'])
+    unless @ticket.property_tenant.property.landlord == current_user
+      flash[:error]="You can only close your own tickers"
       redirect_to dashboard_path
       return
     end

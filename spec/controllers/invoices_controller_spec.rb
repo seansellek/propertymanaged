@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe InvoicesController, type: :controller do
   let(:occupancy) { create :property_tenant }
   let(:landlord) { occupancy.landlord }
-  let(:invoice)  { occupancy.invoice }
+  let(:invoice)  { occupancy.invoices.first }
   before(:each) do
     login landlord
   end
@@ -17,7 +17,7 @@ RSpec.describe InvoicesController, type: :controller do
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit
+      get :edit, id: invoice.id
       expect(response).to have_http_status(:success)
     end
   end

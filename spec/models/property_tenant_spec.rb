@@ -55,10 +55,8 @@ RSpec.describe PropertyTenant, type: :model do
     new_pt.active = true
     expect(new_pt.valid?).to be_falsey
   end
-  it "responds to invoice by creating an invoice" do
+  it "generates invoice on creation" do
     expect(property_tenant).to respond_to(:invoice)
-    expect(property_tenant.invoices.first).to be_nil
-    property_tenant.invoice
     expect(property_tenant.invoices.first).to be_a(Invoice)
   end
   it 'generates an invoice for that month' do
