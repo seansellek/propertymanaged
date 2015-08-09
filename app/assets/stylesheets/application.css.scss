@@ -277,11 +277,8 @@ section > div, section > a{
   bottom: 25px;
   left: 25px;
 }
-<<<<<<< HEAD
+
 .main-objects div::after,.main-objects a::after {
-=======
-.main-objects a::after {
->>>>>>> 1b386d602214987c7cf06cf60e6e2e555f3bca5a
   content:'';
   display: block;
   float: right;
@@ -295,11 +292,7 @@ section > div, section > a{
   // transition-delay: 0.3s;
 
 }
-<<<<<<< HEAD
 .main-objects div:hover::after, .main-objects a:hover::after {
-=======
-.main-objects a:hover::after {
->>>>>>> 1b386d602214987c7cf06cf60e6e2e555f3bca5a
   background-size: 55%;
 }
 .payments .number{
