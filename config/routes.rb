@@ -1,26 +1,21 @@
 Rails.application.routes.draw do
 
-  get 'invoices/show'
-  get 'invoices/edit'
-
-  get 'tickets/index'
-
   post '/signatures/callbacks',
     to: 'signatures#callbacks'
 
 
   root 'sessions#new'
- 
+
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'tickets/:id/close', to: 'tickets#close'
 
   resources :comments
 
-
+  resources :invoices
   resources :landlords
   resources :sessions
-  # resources :invites 
+  # resources :invites
   resources :properties
   resources :tenants, except: :show
   # resources :dashboard
@@ -59,7 +54,7 @@ Rails.application.routes.draw do
 
 
 
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

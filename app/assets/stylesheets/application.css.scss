@@ -32,7 +32,7 @@ html {
 }
 body {
   width: 100%;
-  
+
 }
 
 a {
@@ -142,7 +142,7 @@ header {
         a {
           color: white;
           height: 50px;
-          
+
 
           font-size: 20px;
           margin: 15px;
@@ -246,7 +246,7 @@ form .radio {
  section {
   margin-top: 25px;
  }
-section > div{
+section > div, section > a{
   position: relative;
   width: 30%;
   float: left;
@@ -273,7 +273,7 @@ section > div{
   bottom: 25px;
   left: 25px;
 }
-.main-objects div::after {
+.main-objects div::after,.main-objects a::after {
   content:'';
   display: block;
   float: right;
@@ -287,7 +287,7 @@ section > div{
   // transition-delay: 0.3s;
 
 }
-.main-objects div:hover::after {
+.main-objects div:hover::after, .main-objects a:hover::after {
   background-size: 55%;
 }
 .payments .number{
@@ -337,7 +337,7 @@ section > div{
   // overflow: scrolsl;
 }
 table tr {
-  
+
 }
 table tr:hover td {
   border-top: 0.5px $default solid;
