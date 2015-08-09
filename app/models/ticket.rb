@@ -14,4 +14,14 @@ class Ticket < ActiveRecord::Base
   def close
     self.status = false
   end
+
+  def show_status
+    if self.status
+      'Open'
+    else
+      'Close'
+    end
+  end
+
+
 end

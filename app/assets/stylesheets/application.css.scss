@@ -321,6 +321,11 @@ section > div{
   box-sizing: border-box;
   // overflow-y: scroll;
 }
+
+.secondary-objects .full {
+  width: 100%;
+  overflow: auto;
+}
 .secondary-objects div h2 {
   font-size: 18px;
   color: $dark-text;

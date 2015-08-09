@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   resources :tenants, except: :show
   # resources :dashboard
   resources :occupancy_pictures
-  resources :tickets
   resources :signatures, only: [:new, :create] do
     collection do
       post 'callbacks'
@@ -52,6 +51,8 @@ Rails.application.routes.draw do
   get 'properties/:property_id/invite', to: 'invites#new'
   post 'invites' => 'invites#create'
   get 'tenants/signup', to: 'tenants#new'
+
+  get 'tickets/:id/close', to: 'tickets#close', as: 'close_ticket'
 
 
 
