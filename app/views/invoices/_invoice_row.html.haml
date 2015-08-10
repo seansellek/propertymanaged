@@ -1,0 +1,11 @@
+- @invoices.each_with_index do |invoice, i|
+  %tr.click_row{class: ( i % 2 != 0 ? nil : 'odd')}
+    %td= invoice.property.name
+    %td= invoice.amount
+    %td= invoice.duedate
+    %td
+      -if invoice.paid
+        %div.status.bad Paid
+      -else
+        %div.status.good Pending
+    
