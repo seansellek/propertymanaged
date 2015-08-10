@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :signatures, only: [:new, :create] do
     collection do
       post 'callbacks'
+      get 'index'
     end
   end
   resources :pictures

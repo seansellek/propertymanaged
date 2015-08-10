@@ -6,12 +6,12 @@
 %h1 Your Dashboard
 %section.main-objects
   %a.payments{href: ''}
-    %span.number #{@user.unpaid_invoices.length} 
+    %span.number #{@user.unpaid_invoices.length}
     %span.description Payments waiting
   %a.service{href: tickets_path}
     %span.number #{@user.open_requests.length}
     %span.description Service requests
-  %a.agreements{href: ''}
+  %a.agreements{href: 'signatures/index'}
     %span.number #{@user.active_contracts.length}
     %span.description Active contracts
 %section.secondary-objects
@@ -61,5 +61,3 @@
             -else
               %div.status.good Closed
             %a.comments{href: ticket_comments_path(ticket)}= ticket.comments.count
-
-    
