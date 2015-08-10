@@ -516,6 +516,28 @@ tr.click_row {
 .ticket_row .description {
   width: 50%;
 }
+.main-objects .small {
+  height: 70px;
+}
+.main-objects a.small::after {
+  background-size: 60%;
+  width: 70px;
+}
+.main-objects .small .description {
+  left: 35px;
+}
+.main-objects .small.payments .description {
+  left: 54px;
+}
+.main-objects .small .number {
+  margin-top: 16px;
+  margin-left: 20px;
+}
+
+.tickets.tenant .description {
+  width: 80%;
+}
+
 
 @media screen and ( max-width: 1500px ) {
   html body .container {

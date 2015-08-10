@@ -36,5 +36,5 @@
     %div.container
       #popup-form{style: 'display:none;'}
       = yield
-      -unless current_page?(dashboard_path)
+      -unless current_page?(dashboard_path) || current_page?(login_path)
         = link_to "Back", dashboard_path, class: 'button back'

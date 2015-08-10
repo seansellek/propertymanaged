@@ -2,60 +2,47 @@
 
 %section.main-objects
   %a.small.payments{href: invoices_path}
-    %span.number #{@user.unpaid_invoices.length}
-    %span.description Payments
+    -if @user.unpaid_invoices.length > 0
+      %span.number #{@user.unpaid_invoices.length}
+      %span.description Payment Due
+    -else
+      %span.description.good All Clear!
+
   %a.small.service{href: new_ticket_path}
-    %span.number #{@user.open_requests.length}
+    / %span.number #{@user.open_requests.length}
     %span.description New Service Request
   %a.small.agreements
     %span.number
-    %span.description Active contracts
+    %span.description My Contract
+%section.secondary-objects
+  %div.card.payments
+    %h2 Payment History
+    %table
+      %tr
+        %th Month
+        %th Ammount
+        %th Paid?
+      - current_user.invoices.each_with_index do |invoice, i|
+        %tr{class: ( i % 2 != 0 ? nil : 'odd')}
+          %td= invoice.duedate.strftime("%B %Y")
+          %td= invoice.amount_string
+          %td{class: (invoice.paid? ? 'paid' : 'unpaid')} 
+  %div.card.tickets.tenant
+    %h2 Service Requests
+    %table
+      %tr
+        %th Issue
+        %th Status
+      - current_user.tickets.each_with_index do |ticket, i|
+        %tr.click_row{class: ( i % 2 != 0 ? nil : 'odd')}
+          %td.description
+            %a{href: ticket_path(ticket)}
+              %h3= ticket.title
+            %p= link_to ticket.description, ticket_path(ticket)
+          %td
+            -if ticket.status
+              %div.status.bad Open
+            -else
+              %div.status.good Closed
+            %a.comments{href: ticket_path(ticket)}= ticket.comments.count
 
-%div.card.properties
-  %h2 Properties
-  %table
-    %tr
-      %th Property
-      %th Landlord
-      %th Paid?
-      %th Status
-    -@user.properties.each_with_index do |property,i|
-      %tr{class: ( i % 2 != 0 ? nil : 'odd')}
-        %td= link_to property.name, property_path(property)
-        - if property.active_occupancy?
-          %td= property.active_occupancy.landlord.name
-          %td{class: (property.active_occupancy.paid? ? 'paid' : 'unpaid')}
-          -unless property.active_occupancy.open_requests.empty?
-            - count = property.active_occupancy.open_requests.length
-            %td.bad #{count} service request#{count == 1 ? '' : 's'}
-          -else
-            %td.good All clear!
-        - else
-          %td -
-          %td -
-
-
-
-%div.card.tickets
-  %h2 Service Requests
-  %table
-    %tr
-      %th Property
-      %th Issue
-      %th Status
-    %tr.odd
-      %td Property
-      %td
-        %h3 Plumbing Broke
-        %p When I flush the toilet bad stuff happens. Seriously.
-      %td
-        %div.status.bad Open
-        %div.comments 2
-    %tr
-      %td asd
-      %td
-        %h3 Roof is leaking
-        %p Sometimes I think it rains inside more than it rains outside.
-      %td
-        %div.status.good Closed
-        %div.comments 15
