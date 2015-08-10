@@ -18,8 +18,9 @@ class Property < ActiveRecord::Base
 		!!active_occupancy
 	end
 	def inactivate_occupancies
-		property_tennants.each do |pt|
+		self.property_tenants.each do |pt|
 			pt.active = false
+			pt.save
 		end
 	end
 end
