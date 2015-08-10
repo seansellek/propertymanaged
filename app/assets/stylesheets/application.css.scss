@@ -117,7 +117,7 @@ header {
       background-image: url(asset_path('dropdown-arrow.svg'));
       background-repeat: no-repeat;
       background-position: 90% 50%;
-      z-index: 2;
+      z-index: 3;
       .left {
         float: left;
         width: 30%;
@@ -142,7 +142,7 @@ header {
 .account-menu {
         width: 300px;
         position: absolute;
-        top: -150px;
+        top: -250px;
         right: 0;
         background-color: $accent;
         text-align: center;
@@ -150,6 +150,7 @@ header {
         transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s all;
         transition-delay: 0.2s;
         box-shadow:  3px 4px 12px rgba(0,0,0,0.10);
+        z-index: 2;
         li {
           height: 50px;
           padding-bottom: 10px;
@@ -508,6 +509,12 @@ h1.inline {
   text-indent: -9999999px;
   background-image: url(asset_path('close.svg'));
   background-repeat: no-repeat;
+}
+tr.ticket_row {
+  cursor: pointer;
+}
+.ticket_row .description {
+  width: 50%;
 }
 @media screen and ( max-width: 1500px ) {
   html body .container {

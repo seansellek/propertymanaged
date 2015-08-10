@@ -48,18 +48,6 @@
         %th Property
         %th Issue
         %th Status
-      - current_user.tickets.each_with_index do |ticket, i|
-        %tr{class: ( i % 2 != 0 ? nil : 'odd')}
-          %td= link_to ticket.property.name, property_path(ticket.property)
-          %td
-            %a{href: ticket_path(ticket)}
-              %h3= ticket.title
-            %p= link_to ticket.description, ticket_path(ticket)
-          %td
-            -if ticket.status
-              %div.status.bad Open
-            -else
-              %div.status.good Closed
-            %a.comments{href: ticket_path(ticket)}= ticket.comments.count
+      =render 'tickets/ticket_row'
 
     

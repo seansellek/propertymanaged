@@ -1,22 +1,12 @@
-%h1 Tickets List 
+%h1 All Service Requests
 %section.secondary-objects
-  %div.card.full
+  %div.card.full.tickets
     %table
       %tr
         %th Property
-        %th Title
-        %th Description
+        %th Title/Description
         %th Status
-        %th Date/time 
-        - @tickets.each do |t,i| 
-          %tr
-            %td= t.property_tenant.property.name
-            %td= t.title
-            %td= t.description
-            %td= t.show_status
-            %td= t.created_at.strftime("%-d/%-m/%y: %H:%M %Z")
-            %td= link_to 'Add comment', new_ticket_comment_path(t)
-            %td= link_to "Close Ticket", close_ticket_path(t)
+        =render 'tickets/ticket_row'
 
 
   

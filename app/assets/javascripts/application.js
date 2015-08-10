@@ -24,6 +24,7 @@ ready = function() {
     setTimeout(hideNotice, 3000);
     $('#popup-form').on('input propertychange paste', '#invite_amount', currency);
     $('#ticket_comment').on('click', displayer)
+    $('.ticket_row').on('click', rowClick);
 };
 
 $(document).ready(ready);
@@ -76,4 +77,11 @@ function currency(event) {
     $('#invite_amount').autoNumeric('init', {
         aSign: '$'
     });
+}
+
+function rowClick(event) {
+    var href = $(this).find('a').attr('href');
+    if (href) {
+        window.location = href;
+    }
 }
