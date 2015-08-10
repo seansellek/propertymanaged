@@ -1,5 +1,20 @@
 %h1= @ticket.title
 %section.secondary-objects
-  %div.card.full
+  %div.card.ticket
+    %h2 Request Information
+    %h3 Description
     %p= @ticket.description
-    = link_to 'Back', '#', class: 'back_link button'
+    %h3 Images
+    %div
+    -if @ticket.status
+      %h3.status.bad Status: Open
+    -else
+      %h3.status.good Status: Closed
+  %div.card
+    %h2 Comments
+    -@ticket.comments.each do |comment|
+      %div.comment{class: comment.author_type == 'Landlord' ? 'odd' : '' }
+        %span.author= comment.author.name
+        %p= comment.body
+        %span.timestamp= comment.created_at.strftime("%d/%m/%Y %I:%M %p")
+    %a.button{href: new_ticket_comment_path(@ticket)} Add Comment

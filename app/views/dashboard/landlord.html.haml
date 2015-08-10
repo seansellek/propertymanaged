@@ -60,6 +60,6 @@
               %div.status.bad Open
             -else
               %div.status.good Closed
-            %a.comments{href: ticket_comments_path(ticket)}= ticket.comments.count
+            %a.comments{href: ticket_path(ticket)}= ticket.comments.count
 
     
