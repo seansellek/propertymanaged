@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
   def new
     @comment = current_user.comments.new
     @comment.commentable = @ticket
+    render layout: false
   end
 
   def create

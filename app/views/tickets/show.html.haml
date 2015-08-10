@@ -1,15 +1,16 @@
-%h1= @ticket.title
-%section.secondary-objects
+%h1.inline= @ticket.title
+%div.status_display
+  -if @ticket.status
+    %h3.status.bad Status: Open
+  -else
+    %h3.status.good Status: Closed
+%section.secondary-objects.ticket
   %div.card.ticket
-    %h2 Request Information
     %h3 Description
     %p= @ticket.description
     %h3 Images
-    %div
-    -if @ticket.status
-      %h3.status.bad Status: Open
-    -else
-      %h3.status.good Status: Closed
+    %div.images
+    / put Images here
   %div.card
     %h2 Comments
     -@ticket.comments.each do |comment|
@@ -17,4 +18,7 @@
         %span.author= comment.author.name
         %p= comment.body
         %span.timestamp= comment.created_at.strftime("%d/%m/%Y %I:%M %p")
-    %a.button{href: new_ticket_comment_path(@ticket)} Add Comment
+        -if comment.author == current_user
+          =link_to 'Delete', comment_path(comment), method: :delete, class: 'close'
+    %div#new_comment
+    %a#ticket_comment.button{href: new_ticket_comment_path(@ticket)} Add Comment

@@ -450,6 +450,7 @@ table .unpaid {
 .comment .author {
   font-weight: 400;
   padding-bottom: 15px;
+  color: $dark-text;
   display: block;
 }
 .comment p {
@@ -460,9 +461,7 @@ table .unpaid {
   text-align: center;
   margin: 50px 25px;
 }
-.card.ticket h3 {
-  width: 40%;
-
+.card.ticket h3, h3.status {
   text-align: center;
   display: block;
   padding: 15px;
@@ -470,17 +469,46 @@ table .unpaid {
   color: white;
   font-weight: 400;
 }
-.card.ticket h3.bad {
+h3.status.bad {
   background-color: $notice;
 }
-.card.ticket h3.good {
+h3.status.good {
   background-color: $accent;
 }
-.card.ticket h3.bad , .card.ticket h3.good {
-  position: absolute;
-  bottom: 0;
+ h3.status.bad , h3.status.good {
+  display: inline-block;
+  width: 100px;
+  font-size: 14px;
 }
-
+div.status_display {
+  position: relative;
+  left: 83%;
+  top: -90px;
+}
+.secondary-objects.ticket {
+  margin-top: -25px;
+}
+.container {
+  position: relative;
+}
+h1.inline {
+  display: inline-block;
+  width: 50%;
+}
+#ticket_comment {
+  background-color: $accent;
+}
+.comment .close {
+  display: block;
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  text-indent: -9999999px;
+  background-image: url(asset_path('close.svg'));
+  background-repeat: no-repeat;
+}
 @media screen and ( max-width: 1500px ) {
   html body .container {
     width: 80%;

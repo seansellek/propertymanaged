@@ -34,5 +34,7 @@
     %div#back
     %div#notification
     %div.container
+      #popup-form{style: 'display:none;'}
       = yield
-      = link_to "Back", dashboard_path, class: 'button back'
+      -unless current_page?(dashboard_path)
+        = link_to "Back", dashboard_path, class: 'button back'

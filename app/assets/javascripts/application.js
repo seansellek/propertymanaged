@@ -23,22 +23,31 @@ ready = function() {
     setTimeout(hideError, 3000);
     setTimeout(hideNotice, 3000);
     $('#popup-form').on('input propertychange paste', '#invite_amount', currency);
-    $('.back_link').click(function() {
-        window.history.back();
-        return false;
-    });
+    $('#ticket_comment').on('click', displayer)
 };
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
 
-function displayer(event) {
+function displayCommentForm(event) {
     event.preventDefault();
     var path = $(event.target).attr('href');
-
     $.ajax(path, {
         success: function(response) {
             var form = response;
+            $('#new_comment').html(form).addClass('new_comment_form').slideUp;
+        }
+    })
+}
+
+function displayer(event) {
+    event.preventDefault();
+    var path = $(event.target).attr('href');
+    console.log(path);
+    $.ajax(path, {
+        success: function(response) {
+            var form = response;
+            console.log(form);
             $('#popup-form').html(form).slideDown();
         }
     });

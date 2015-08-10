@@ -1,7 +1,5 @@
 = form_for @comment do |f|
   = f.hidden_field :commentable_id, :value => @comment.commentable_id
   = f.hidden_field :commentable_type, :value => @comment.commentable_type
-  = f.label :body, 'Body:'
-  = f.text_field :body
-  %br
-  = f.submit
+  = f.text_field :body, placeholder: 'Comment'
+  = f.submit 'Add Comment'

@@ -15,6 +15,7 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new  
+    @comment = Comment.new(commentable_id: @ticket.id, commentable_type: 'Ticket')
   end
 
   def create
