@@ -1,6 +1,6 @@
 - current_user.tickets.each_with_index do |ticket, i|
-  %tr{class: ( i % 2 != 0 ? nil : 'odd')}
-    %td= link_to ticket.property.name, property_path(ticket.property)
+  %tr.click_row{class: ( i % 2 != 0 ? nil : 'odd')}
+    %td= ticket.property.name
     %td
       %a{href: ticket_path(ticket)}
         %h3= ticket.title

@@ -7,6 +7,7 @@ gem 'mimemagic'
 gem 'rails_12factor'
 
 
+
 gem 'immigrant'
 
 gem 'hellosign-ruby-sdk'
@@ -69,9 +70,11 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'simplecov'
+  gem 'growl'
 end
 
 group :development do
+  gem 'guard-rspec'
   gem "guard", ">= 2.2.2",       :require => false
   gem "guard-livereload",        :require => false
   gem "rack-livereload"

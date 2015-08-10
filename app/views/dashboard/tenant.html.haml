@@ -1,13 +1,13 @@
 %h1 Welcome, #{current_user.name}!
 
 %section.main-objects
-  %a.payments{href: invoices_path}
-    -# %span.number #{@user.unpaid_invoices.length}
+  %a.small.payments{href: invoices_path}
+    %span.number #{@user.unpaid_invoices.length}
     %span.description Payments
-  %a.service{href: new_ticket_path}
-    -# %span.number #{@user.open_requests.length}
+  %a.small.service{href: new_ticket_path}
+    %span.number #{@user.open_requests.length}
     %span.description New Service Request
-  %a.agreements
+  %a.small.agreements
     %span.number
     %span.description Active contracts
 

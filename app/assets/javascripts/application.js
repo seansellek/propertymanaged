@@ -18,13 +18,14 @@
 var ready;
 ready = function() {
     $('.properties').on('click', '.invite-tenant', displayer);
-    $('#popup-form').on('click', '#invite-close', formHide);
+    $('#add_property').on('click', displayer)
+    $('#popup-form').on('click', '#form-close', formHide);
     $('#popup-form').on('submit', formSubmit);
     setTimeout(hideError, 3000);
     setTimeout(hideNotice, 3000);
     $('#popup-form').on('input propertychange paste', '#invite_amount', currency);
     $('#ticket_comment').on('click', displayer)
-    $('.ticket_row').on('click', rowClick);
+    $('.click_row').on('click', rowClick);
 };
 
 $(document).ready(ready);

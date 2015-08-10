@@ -8,6 +8,4 @@
     %li= f.text_field :state, placeholder: 'State'
     %li= f.text_field :zip, placeholder: 'Zip'
     %li= f.submit 'Create Property'
-
-%FORM
-  %INPUT{:Type => "button", :VALUE => "Back", :onClick => "history.go(-1);return true;"}/
+    %li=link_to 'Cancel', dashboard_path, class: 'button', id: 'form-close'

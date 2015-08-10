@@ -510,12 +510,13 @@ h1.inline {
   background-image: url(asset_path('close.svg'));
   background-repeat: no-repeat;
 }
-tr.ticket_row {
+tr.click_row {
   cursor: pointer;
 }
 .ticket_row .description {
   width: 50%;
 }
+
 @media screen and ( max-width: 1500px ) {
   html body .container {
     width: 80%;
