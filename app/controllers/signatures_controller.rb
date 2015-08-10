@@ -9,9 +9,9 @@ class SignaturesController < ApplicationController
   end
 
   def create
-    @embedded_request = create_embedded_request(name: params[:name], email: params[:email])
+    embedded_request = create_embedded_request(name: params[:name], email: params[:email])
     @sign_url = get_sign_url(embedded_request)
-    render :embedded_signature
+    render :embedded_signatures
   end
 
   private
@@ -19,7 +19,7 @@ class SignaturesController < ApplicationController
 def create_embedded_request(opts = {})
   HelloSign.create_embedded_signature_request(
     test_mode: 1, #for testing set to 1, once we blow up, set to 0.
-    client_id: 'client_id', #needs to be changed to actual client id
+    client_id: 'a5a0c7391936852c61f3eaa29a25081e', #needs to be changed to actual client id
     subject: 'My first embedded signature request',
     message: 'Awesome!',
     signers: [
@@ -28,7 +28,7 @@ def create_embedded_request(opts = {})
         name: opts[:name]
       }
     ],
-    files: ['actual_name_of_file.pdf'] 
+    files: ['/Users/owner/Downloads/samplelease.pdf']
   )
 end
 
