@@ -5,13 +5,13 @@
 
 %h1 Your Dashboard
 %section.main-objects
-  %a.payments{href: ''}
+  %a.payments{href: invoices_path}
     %span.number #{@user.unpaid_invoices.length} 
     %span.description Payments waiting
   %a.service{href: tickets_path}
     %span.number #{@user.open_requests.length}
     %span.description Service requests
-  %a.agreements{href: 'signatures/index'}
+  %a.agreements{href: 'signatures'}
     %span.number #{@user.active_contracts.length}
     %span.description Active contracts
 %section.secondary-objects
@@ -49,5 +49,3 @@
         %th Issue
         %th Status
       =render 'tickets/ticket_row'
-
-    

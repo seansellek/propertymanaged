@@ -1,0 +1,15 @@
+- @invoices.each_with_index do |invoice, i|
+  %tr.click_row{class: ( i % 2 != 0 ? nil : 'odd')}
+    %td= invoice.property.name
+    %td= invoice.amount_string
+    %td= invoice.duedate.strftime("%d/%m/%Y %I:%M %p")
+    %td
+      -if invoice.paid
+        %div.status.good Paid
+      -else
+        %div.status.bad Unpaid
+    %td
+      -if !invoice.paid && session[:user_type] == 'landlord'
+        =link_to 'Make payment', invoice_payment_path(invoice), method: :paid
+  
+   

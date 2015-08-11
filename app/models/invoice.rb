@@ -1,6 +1,7 @@
 class Invoice < ActiveRecord::Base
   belongs_to :property_tenant
   has_one :tenant, through: :property_tenant
+  has_one :property, through: :property_tenant
   after_initialize :set_last_notified
   include Monify
 
@@ -27,4 +28,9 @@ class Invoice < ActiveRecord::Base
   def set_last_notified
     self.last_notified ||= Date.today
   end
+
+  def paid_invoice
+    self.paid = true
+  end
+
 end

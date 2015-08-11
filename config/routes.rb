@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'tickets/:id/close', to: 'tickets#close'
+  post 'invoices/:id/close', to: 'invoices#close', as: 'invoice_payment'
 
   resources :comments
 
@@ -20,10 +21,9 @@ Rails.application.routes.draw do
   resources :tenants, except: :show
   # resources :dashboard
   resources :occupancy_pictures
-  resources :signatures, only: [:new, :create] do
+  resources :signatures, only: [:new, :create, :index] do
     collection do
       post 'callbacks'
-      get 'index'
     end
   end
   resources :pictures

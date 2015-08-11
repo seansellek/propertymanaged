@@ -16,11 +16,11 @@ class InvitesController < ApplicationController
       if @invite.tenant != nil
         @tenant = @invite.tenant
         @occupancy = PropertyTenant.new(property: @invite.property, rate: @invite.amount, tenant: @tenant)
-        
+
         if @occupancy.save
           InviteMailer.existing_tenant_invite(@invite).deliver_now
           flash[:notice] = 'Invite sent!'
-        else 
+        else
           raise @invite.errors.full_messages
         end
       else

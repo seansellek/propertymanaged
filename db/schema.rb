@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150809043135) do
+ActiveRecord::Schema.define(version: 20150811015333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20150809043135) do
     t.boolean  "signed",             default: false
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+    t.string   "signature_id"
+    t.string   "sign_url"
   end
 
   add_index "contracts", ["property_tenant_id"], name: "index_contracts_on_property_tenant_id", using: :btree

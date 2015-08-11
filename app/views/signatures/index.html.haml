@@ -1,11 +1,22 @@
-%h1 Contracts and Lease agreements
+%h1 Contracts / Lease agreements
 
-= link_to 'New Contract sign', new_signature_path, class: 'button'
+%p
+  =Contract.signed_copy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 %section.secondary-objects
-= link_to 'Show signed contracts', new_signature_path, class: 'button'
-
-%br
-
-%FORM
-  %INPUT{:Type => "button", :VALUE => "Back", :onClick => "history.go(-1);return true;"}
+= link_to 'New Contract sign', new_signature_path, class: 'button'
