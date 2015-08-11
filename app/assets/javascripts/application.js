@@ -18,7 +18,7 @@
 var ready;
 ready = function() {
     prepareDropzone();
-    prepareMasonry();
+    // prepareMasonry();
     prepareHelloSign();
 
     $('.properties').on('click', '.invite-tenant', displayer);
@@ -28,7 +28,7 @@ ready = function() {
     setTimeout(hideError, 3000);
     setTimeout(hideNotice, 3000);
     $('#popup-form').on('input propertychange paste', '#invite_amount', currency);
-    $('#ticket_comment').on('click', displayer)
+    $('#ticket_comment').on('click', displayer);
     $('.click_row').on('click', rowClick);
 
 

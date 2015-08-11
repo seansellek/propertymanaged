@@ -1,4 +1,4 @@
-%h1.inline= @ticket.title
+%h1.inline Service Request
 %div.status_display
   -if @ticket.status
     %h3.status.bad Status: Open
@@ -6,7 +6,7 @@
     %h3.status.good Status: Closed
 %section.secondary-objects.ticket
   %div.card.ticket
-    %h3 Description
+    %h3= @ticket.title
     %p= @ticket.description
     %h3 Images
     %div#masonry_images

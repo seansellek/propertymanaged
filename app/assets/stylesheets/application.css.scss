@@ -540,6 +540,15 @@ tr.click_row {
 .tickets.tenant .description {
   width: 80%;
 }
+.masonry_image {
+  width: 80%;
+  margin: 5px auto;
+  display: block;
+}
+#masonry_images {
+  overflow-y: scroll;
+  height: 300px;
+}
 
 
 @media screen and ( max-width: 1500px ) {
