@@ -31,9 +31,9 @@ class PropertyTenant < ActiveRecord::Base
   def open_requests
     tickets.empty? ? [] : tickets.active
   end
-  def paid?
 
-    
+  def paid?
+    self.invoices.where(paid: false).empty?
   end
 
    private

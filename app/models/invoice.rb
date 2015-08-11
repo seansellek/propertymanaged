@@ -28,4 +28,9 @@ class Invoice < ActiveRecord::Base
   def set_last_notified
     self.last_notified ||= Date.today
   end
+
+  def paid_invoice
+    self.paid = true
+  end
+
 end

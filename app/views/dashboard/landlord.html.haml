@@ -5,7 +5,7 @@
 
 %h1 Your Dashboard
 %section.main-objects
-  %a.payments{href: ''}
+  %a.payments{href: invoices_path}
     %span.number #{@user.unpaid_invoices.length} 
     %span.description Payments waiting
   %a.service{href: tickets_path}

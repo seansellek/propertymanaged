@@ -14,4 +14,11 @@ class InvoicesController < ApplicationController
     Invoice.find(params[:id]).paid = true
   end
 
+  def close
+    @invoice = Invoice.find(params['id'])
+    @invoice.paid = true
+    @invoice.save
+    redirect_to dashboard_path
+ end
+
 end
