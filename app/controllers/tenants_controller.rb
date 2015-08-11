@@ -1,5 +1,5 @@
 class TenantsController < ApplicationController
-  def new 
+  def new
     @token = params[:invite_token]
     @invite = Invite.find_by(token: @token)
     @tenant = Tenant.new
@@ -9,7 +9,7 @@ class TenantsController < ApplicationController
     @token = params[:tenant][:token]
     @invite = Invite.find_by(token: @token)
     unless @invite
-      render :noinvite 
+      render :noinvite
       return
     end
     @tenant = Tenant.new(tenant_params)
@@ -25,7 +25,7 @@ class TenantsController < ApplicationController
     @propertytenant.save
     @invite.destroy
     set_current_user @tenant
-    redirect_to dashboard_path
+    redirect_to url_for(controller: :signatures_controller, action: :create, name: @tenant.name, email: @tenant.email)
   end
 
   private
