@@ -465,7 +465,7 @@ table .unpaid {
   text-align: center;
   margin: 50px 25px;
 }
-.card.ticket h3, h3.status {
+.card.ticket h3, a.status {
   text-align: center;
   display: block;
   padding: 15px;
@@ -473,13 +473,13 @@ table .unpaid {
   color: white;
   font-weight: 400;
 }
-h3.status.bad {
+h3.status.bad, a.status.bad {
   background-color: $notice;
 }
-h3.status.good {
+h3.status.good, a.status.good{
   background-color: $accent;
 }
- h3.status.bad , h3.status.good {
+ a.status.bad , a.status.good {
   display: inline-block;
   width: 100px;
   font-size: 14px;
@@ -548,6 +548,12 @@ tr.click_row {
 #masonry_images {
   overflow-y: scroll;
   height: 300px;
+}
+.button.close_ticket {
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 25px;
 }
 
 

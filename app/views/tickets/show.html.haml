@@ -1,9 +1,9 @@
 %h1.inline Service Request
 %div.status_display
   -if @ticket.status
-    %h3.status.bad Status: Open
+    %a.status.bad{href: close_ticket_path(@ticket)} Status: Open
   -else
-    %h3.status.good Status: Closed
+    %a.status.good{href: '#'} Status: Closed
 %section.secondary-objects.ticket
   %div.card.ticket
     %h3= @ticket.title
@@ -24,3 +24,4 @@
           =link_to 'Delete', comment_path(comment), method: :delete, class: 'close'
     %div#new_comment
     %a#ticket_comment.button{href: new_ticket_comment_path(@ticket)} Add Comment
+

@@ -2,7 +2,7 @@ class TicketsController < ApplicationController
   before_action :require_logged_in
   before_action :require_tenant, only: [:new, :create, :update]
   before_action :require_owner, except: [:new, :create, :index, :close]
-  before_action :require_landlord_close, only: [:close]
+  before_action :require_tenant_close, only: [:close]
 
   
   def index
@@ -42,7 +42,6 @@ class TicketsController < ApplicationController
   end
 
  def close
-  byebug
     @ticket = Ticket.find(params['id'])
     @ticket.close
     @ticket.save
@@ -70,9 +69,9 @@ class TicketsController < ApplicationController
     end
   end
 
-  def require_landlord_close
+  def require_tenant_close
     @ticket = Ticket.find(params['id'])
-    unless @ticket.property_tenant.property.landlord == current_user
+    unless @ticket.property_tenant.tenant == current_user
       flash[:error]="You can only close your own tickers"
       redirect_to dashboard_path
       return
