@@ -23,9 +23,14 @@ class TenantsController < ApplicationController
     @propertytenant.property = @invite.property
     @propertytenant.rate = @invite.amount
     @propertytenant.save
+    @contract = Contract.new
+    @contract.property_tenant_id = @propertytenant.id
+    @contract.save
+    @contract.generate_sign_url
+    @contract.save
     @invite.destroy
     set_current_user @tenant
-    redirect_to url_for(controller: :signatures_controller, action: :create, name: @tenant.name, email: @tenant.email)
+    redirect_to dashboard_path
   end
 
   private

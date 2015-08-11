@@ -45,4 +45,7 @@
             -else
               %div.status.good Closed
             %a.comments{href: ticket_path(ticket)}= ticket.comments.count
+-unless current_user.contracts.where(signed: false).empty?
+  #hello_sign_request{style: 'display: none'}= current_user.contracts.where(signed: false).first.sign_url
+
 

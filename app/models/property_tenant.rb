@@ -10,7 +10,7 @@ class PropertyTenant < ActiveRecord::Base
   after_create :invoice
 
 
-  validates :duedate, numericality: { less_than: 29, greater_than: 0}
+  validates :duedate, numericality: { less_than: 29, greater_than: 0 }
   validate :one_active_per_tenant, :one_active_per_property
   # validates :active, uniqueness: { scope: :tenant }
    # validates :active, uniqueness: { scope: :property }
