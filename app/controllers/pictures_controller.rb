@@ -1,29 +1,18 @@
 class PicturesController < ApplicationController
 
-before_action :set_picture, only: [:show, :edit, :update, :destroy]
-before_action :set_ticket, only: [:create, :update, :destroy]
-
-def index
-end
-
-def edit
-
-end
+# before_action :set_picture, only: [:show, :edit, :update, :destroy]
+# before_action :set_ticket, only: [:create, :update, :destroy]
 
 def new
   @picture = Picture.new
 end
 
 def create
-
-  @picture = @ticket.pictures.new(picture_params)
-    
-  
+  @picture = Picture.new(picture_params)
   if @picture.save
-    flash[:notice] = "The image was successfuly saved"
-    redirect_to ticket_path(@ticket)
+    render json: { message: "success", picture_id: @picture.id}, status: 200
   else
-    render :back
+    render json: { error: @picture.errors.full_messages.join(',')}, status: 400
   end
 
 end
@@ -42,15 +31,15 @@ end
 private
 
 def picture_params
-  params.require(:picture).permit(:image, :caption)
+  params.require(:picture).permit(:image)
 end
 
-def set_ticket
-  @ticket = Ticket.find(params[:ticket_id])
-end
+# def set_ticket
+#   @ticket = Ticket.find(params[:ticket_id])
+# end
 
-def set_picture
-  @picture = Picture.find(params[:id])
-end
+# def set_picture
+#   @picture = Picture.find(params[:id])
+# end
 
 end

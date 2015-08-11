@@ -14,12 +14,13 @@ class TicketsController < ApplicationController
   end
 
   def new
-    @ticket = Ticket.new  
-    @comment = Comment.new(commentable_id: @ticket.id, commentable_type: 'Ticket')
+    @ticket = Ticket.new
+    @picture = Picture.new  
   end
 
   def create
     @ticket = current_user.current_occupancy.tickets.new(ticket_params)
+    @ticket.picture_ids = params['picture_ids'].map(&:to_i)
     if @ticket.save
       #TODO: create notification
       flash[:notice] = "The Ticket is successfully saved!"
@@ -56,7 +57,7 @@ class TicketsController < ApplicationController
   #use strong parameters to protect from mass assignment
   def ticket_params
     params.require(:ticket).
-      permit(:title, :description)
+      permit(:title, :description, :picture_ids)
   end
 
   def require_owner

@@ -17,6 +17,9 @@
 
 var ready;
 ready = function() {
+    prepareDropzone();
+    prepareMasonry();
+
     $('.properties').on('click', '.invite-tenant', displayer);
     $('#add_property').on('click', displayer)
     $('#popup-form').on('click', '#form-close', formHide);
@@ -26,6 +29,7 @@ ready = function() {
     $('#popup-form').on('input propertychange paste', '#invite_amount', currency);
     $('#ticket_comment').on('click', displayer)
     $('.click_row').on('click', rowClick);
+
 };
 
 $(document).ready(ready);
@@ -85,4 +89,31 @@ function rowClick(event) {
     if (href) {
         window.location = href;
     }
+}
+
+function prepareDropzone() {
+    Dropzone.autoDiscover = false;
+
+    $('.dropzone').dropzone({
+        paramName: 'picture[image]',
+        init: function() {
+            this.on('success', addImageToTicketForm);
+        }
+    });
+
+    function addImageToTicketForm(event, response) {
+        var field = ""
+        $('<input>').attr({
+            type: 'hidden',
+            name: 'picture_ids[]',
+            value: response['picture_id']
+        }).prependTo('#new_ticket');
+    }
+}
+
+function prepareMasonry() {
+    var grid = $('#masonry_images').masonry({
+        itemSelector: '.masonry_image',
+        columnWidth: '50%'
+    });
 }

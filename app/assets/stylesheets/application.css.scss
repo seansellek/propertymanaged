@@ -207,7 +207,7 @@ form li {
     margin-bottom: 20px;
 }
 
-form input:not([type='radio']), .button {
+form input:not([type='radio']), .button, textarea {
     color: $dark-text;
     width: 100%;
     padding: 20px 42px;
@@ -218,9 +218,12 @@ form input:not([type='radio']), .button {
     transition: cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s all;
 }
 
-form input:focus {
+form input:focus, textarea:focus {
     outline: 0;
     border-left: 12px solid $default;
+}
+textarea {
+  height: 250px;
 }
 
 form input[type='submit'], .button {

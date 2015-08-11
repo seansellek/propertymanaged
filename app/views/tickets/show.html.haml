@@ -9,7 +9,9 @@
     %h3 Description
     %p= @ticket.description
     %h3 Images
-    %div.images
+    %div#masonry_images
+      - @ticket.pictures.each do |pic|
+        =image_tag pic.image.url, class: 'masonry_image'
     / put Images here
   %div.card
     %h2 Comments

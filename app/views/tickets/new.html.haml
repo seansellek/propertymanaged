@@ -1,2 +1,8 @@
-%h1 New Ticket
+%h1 New Service Request
 = render 'form'
+
+= form_for @picture, html: { multipart: true, class: 'dropzone'} do |f|
+  .fallback
+    =f.file_field :image
+    =f.submit 'Upload'
+
