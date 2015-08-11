@@ -135,11 +135,14 @@ function embeddedSignatureRequest(url) {
         'allowCancel': true,
         'messageListener': function(eventData) {
             var url = $('#contract_id').html();
-            $.ajax(url , {
-                success: function() {
-                    alert('Success!');
+            $.ajax(url, {
+                data: {
+                    signature_id: eventData['signature_id']
+                },
+                success: function(response) {
+                    console.log(response);
                 }
-            })
+            });
         }
     });
 }
