@@ -562,7 +562,58 @@ tr.click_row {
     padding-top: 35px;
 }
 
+@media screen and (max-width: 700px) {
+  .main-objects a {
+    float: none;
+    display: block;
+    width: 100%;
+  }
+  .main-objects a.payments::after, .main-objects a.service::after, .main-objects a.agreements::after {
+    height: 100%;
+  }
+  .main-objects a.agreements::after {
+    background-size: 30%;
+  }
+  .main-objects a.service::after {
+    background-size: 40%;
+  }
+  .secondary-objects {
+    display: flex;
+    flex-flow: column;
+  }
 
+  .secondary-objects .card {
+    float: none;
+    width: 100%;
+  }
+
+  .secondary-objects .card.properties {
+    order: 2;
+  }
+}
+@media screen and (max-width: 350px) {
+  html body header .account {
+    width: 150px !important;
+    text-indent: -999px;
+    .left {
+      width: 60%;
+    }
+  }
+  header .logo a {
+    width: 100px !important;
+    background-position: 40%;
+  }
+}
+@media screen and ( max-width: 500px ) {
+  .logo span {
+    display: none !important;
+  }
+}
+@media screen and ( max-width: 800px) {
+  html body .container {
+    width: 90% !important;
+  }
+}
 @media screen and ( max-width: 1500px ) {
   html body .container {
     width: 80%;
