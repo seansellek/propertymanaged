@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Propertymanaged
+    %title Kito.co
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     %script{:src => "//s3.amazonaws.com/cdn.hellofax.com/js/embedded.js", :type => "text/javascript"}
@@ -37,5 +37,5 @@
     %div.container
       #popup-form{style: 'display:none;'}
       = yield
-      -unless current_page?(dashboard_path) || current_page?(login_path)
+      -unless current_page?(dashboard_path) || current_page?(login_path) || current_page?(root_path)
         = link_to "Back", dashboard_path, class: 'button back'

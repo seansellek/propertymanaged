@@ -8,7 +8,7 @@ Rails.application.configure do
     password:             ENV['GMAIL_PASSWORD'],
   }
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.action_mailer.default_url_options = { :host => "kito.co" }
   config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

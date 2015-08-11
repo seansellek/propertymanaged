@@ -10,6 +10,6 @@
         %div.status.bad Unpaid
     %td
       -if !invoice.paid && session[:user_type] == 'landlord'
-        =link_to 'Make payment', invoice_payment_path(invoice), method: :paid
+        =link_to 'Mark Paid', invoice_payment_path(invoice), method: :paid, class: 'button'
   
    

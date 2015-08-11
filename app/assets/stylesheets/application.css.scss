@@ -398,11 +398,11 @@ table .unpaid {
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }
-.card.properties td > a.button {
+td > a.button {
   font-size: 14px;
   padding: 5px;
   background-color: $default;
-  position: static;
+  position: static !important;
 }
 .tickets td {
   height: 75px;
@@ -593,7 +593,7 @@ tr.click_row {
 }
 @media screen and (max-width: 350px) {
   html body header .account {
-    width: 150px !important;
+    width: 100px !important;
     text-indent: -999px;
     .left {
       width: 60%;

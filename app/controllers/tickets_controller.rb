@@ -20,7 +20,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = current_user.current_occupancy.tickets.new(ticket_params)
-    @ticket.picture_ids = params['picture_ids'].map(&:to_i)
+    @ticket.picture_ids = params['picture_ids'].map(&:to_i) if params['picture_ids']
     if @ticket.save
       #TODO: create notification
       flash[:notice] = "The Ticket is successfully saved!"
