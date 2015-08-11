@@ -1,1 +1,10 @@
-%h1 Invoices#index
+%h1 All Invoices
+%section.secondary-objects
+  %div.card.full.tickets
+    %table
+      %tr
+        %th Property
+        %th Amount
+        %th Duedate
+        %th Payment Status
+        =render 'invoices/invoice_row'

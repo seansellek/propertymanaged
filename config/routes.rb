@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'tickets/:id/close', to: 'tickets#close'
+  post 'invoices/:id/close', to: 'invoices#close', as: 'invoice_payment'
 
   resources :comments
 
