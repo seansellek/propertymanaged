@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'contracts/sign'
+
   post '/signatures/callbacks',
     to: 'signatures#callbacks'
 
@@ -52,7 +54,7 @@ Rails.application.routes.draw do
 
 
 
-
+  get 'contracts/:id/sign', to: 'contracts#sign', as: 'sign_contract'
 
 
 

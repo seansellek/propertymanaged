@@ -134,7 +134,12 @@ function embeddedSignatureRequest(url) {
         'url': url,
         'allowCancel': true,
         'messageListener': function(eventData) {
-            console.log(eventData);
+            var url = $('#contract_id').html();
+            $.ajax(url , {
+                success: function() {
+                    alert('Success!');
+                }
+            })
         }
     });
 }
