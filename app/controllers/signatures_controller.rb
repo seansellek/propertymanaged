@@ -17,7 +17,7 @@ class SignaturesController < ApplicationController
     embedded_request = create_embedded_request(name: params[:name], email: params[:email])
     @contract.sign_url = get_sign_url(embedded_request)
     @contract.save
-    redirect_to dashboard_path
+    render :embedded_signatures
   end
 
   private
